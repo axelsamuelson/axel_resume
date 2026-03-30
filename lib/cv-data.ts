@@ -1,6 +1,11 @@
 export const about =
   "Growth leader with 11 years building and scaling digital marketing functions across paid media, SEO, CRO, automation, and analytics. My focus is premium DTC e-commerce, where I design growth models that balance new customer acquisition with long-term profitability. Beyond marketing, I've built hands-on experience across the commercial core of a business - working closely with finance on budget allocation, contribution margin, and P&L ownership, and collaborating with procurement and logistics teams to ensure growth strategy connects with operational reality. Over the years I've pushed deeper into data and product, developing a more technical toolkit to reduce the gap between insight and action. I lead cross-functional teams with a clear focus on business outcomes, and I thrive in environments where strategy, execution, and accountability sit close together."
 
+export type ExperienceLink = {
+  label: string
+  href: string
+}
+
 export type Experience = {
   id: string
   linkLabel: string
@@ -12,6 +17,7 @@ export type Experience = {
   imageSrc: string
   gradientFrom: string
   gradientTo: string
+  links?: ExperienceLink[]
 }
 
 export const experiences: Experience[] = [
@@ -53,6 +59,10 @@ export const experiences: Experience[] = [
     imageSrc: "/images/pact.jpg",
     gradientFrom: "#1c0a0a",
     gradientTo: "#991b1b",
+    links: [
+      { label: "PACT Wines", href: "https://pactwines.com/" },
+      { label: "Dirty Wine", href: "https://www.dirtywine.se/" },
+    ],
   },
   {
     id: "exp-cdlp",

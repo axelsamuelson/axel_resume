@@ -2,6 +2,8 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import RevealOnView from "@/components/reveal-on-view"
 
+type LinkItem = { label: string; href: string }
+
 type Props = {
   id?: string
   title?: string
@@ -10,6 +12,7 @@ type Props = {
   bullets?: string[]
   imageSrc?: string
   tags?: string[]
+  links?: LinkItem[]
   priority?: boolean
   gradientFrom?: string
   gradientTo?: string
@@ -25,6 +28,7 @@ export default function ProjectCard({
   bullets = [],
   imageSrc = "/placeholder.jpg",
   tags = [],
+  links,
   priority = false,
   gradientFrom = "#0f172a",
   gradientTo = "#6d28d9",
@@ -81,6 +85,23 @@ export default function ProjectCard({
                     <p className="mt-2 text-sm text-white/50">{period}</p>
                   ) : null}
                 </header>
+
+                {links && links.length > 0 ? (
+                  <ul className="mt-4 flex flex-wrap gap-2" role="list">
+                    {links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center rounded-full border border-white/[0.14] bg-white/[0.07] px-3.5 py-1.5 text-xs font-medium tracking-wide text-white/85 shadow-sm shadow-black/20 transition-[color,background-color,border-color] duration-200 hover:border-white/[0.28] hover:bg-white/[0.14] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950/80"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
 
                 {summary ? (
                   <p className="mt-5 text-sm leading-relaxed text-white/75 sm:text-[15px] sm:leading-[1.65]">

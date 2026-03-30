@@ -209,6 +209,7 @@ export default function Page() {
                 bullets={exp.bullets}
                 imageSrc={exp.imageSrc}
                 tags={exp.tags}
+                links={exp.links}
                 priority={idx === 0}
                 gradientFrom={exp.gradientFrom}
                 gradientTo={exp.gradientTo}
@@ -228,6 +229,7 @@ export default function Page() {
                 bullets={exp.bullets}
                 imageSrc={exp.imageSrc}
                 tags={exp.tags}
+                links={exp.links}
                 priority={false}
                 gradientFrom={exp.gradientFrom}
                 gradientTo={exp.gradientTo}
@@ -247,6 +249,7 @@ export default function Page() {
                 bullets={exp.bullets}
                 imageSrc={exp.imageSrc}
                 tags={exp.tags}
+                links={exp.links}
                 priority={false}
                 gradientFrom={exp.gradientFrom}
                 gradientTo={exp.gradientTo}
