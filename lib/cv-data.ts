@@ -34,6 +34,27 @@ export const experiences: Experience[] = [
     gradientTo: "#10b981",
   },
   {
+    id: "exp-pact",
+    linkLabel: "PACT",
+    title: "Founder - PACT, Stockholm",
+    period: "2025 – Present",
+    summary:
+      "Founded PACT, a technology-enabled wine platform built to modernize how independent wine is discovered, sourced, and bought. PACT operates as a marketplace connecting producers, trade buyers, and consumers through a demand-driven model designed to reduce friction in sourcing, discovery, and logistics. Responsible for overall business strategy, commercial development, producer partnerships, platform vision, fundraising, and go-to-market execution.",
+    bullets: [
+      "Built the company's commercial model, platform concept, and strategic positioning from the ground up",
+      "Established direct producer relationships and structured a sourcing model designed to reduce inventory risk and improve supply efficiency",
+      "Developed a three-sided marketplace model connecting producers, trade accounts, and end customers",
+      "Led sales and partnership development with restaurants, wine bars, and other relevant trade channels",
+      "Defined the product roadmap for a platform leveraging structured wine data, pricing intelligence, and AI-powered extraction of wine lists",
+      "Combined commercial execution with hands-on product development to solve structural inefficiencies in how wine is bought and sold",
+      "Secured initial backing from two angel investors with backgrounds in technology and food to support the company's early growth",
+    ],
+    tags: ["Entrepreneurship", "Founder", "Marketplace"],
+    imageSrc: "/images/pact.jpg",
+    gradientFrom: "#1c0a0a",
+    gradientTo: "#991b1b",
+  },
+  {
     id: "exp-cdlp",
     linkLabel: "CDLP",
     title: "Head of Growth - CDLP, Stockholm",
@@ -167,7 +188,7 @@ export const experiences: Experience[] = [
     summary:
       "Founded and operated a DTC watch brand offering minimalist mechanical timepieces with a Scandinavian design profile. Owned the full business end to end - product development, supplier relations, e-commerce setup, performance marketing, content production, and fulfillment.",
     bullets: [],
-    tags: ["Work", "Founder", "DTC"],
+    tags: ["Entrepreneurship", "Founder", "DTC"],
     imageSrc: "/images/ka.png",
     gradientFrom: "#0b132b",
     gradientTo: "#10b981",
@@ -238,11 +259,23 @@ export const experiences: Experience[] = [
   },
 ]
 
-/** Sidebar: jobs & roles (tags include "Work"). */
+/** Sidebar & cards: employment (Work), excludes Entrepreneurship-only entries. */
 export const workExperiences = experiences.filter((e) => e.tags.includes("Work"))
+
+/** Sidebar & cards: PACT, Karl Axel Watches, etc. */
+export const entrepreneurshipExperiences = experiences.filter((e) =>
+  e.tags.includes("Entrepreneurship")
+)
 
 /** Sidebar: schools (tags include "Education"). */
 export const educationExperiences = experiences.filter((e) => e.tags.includes("Education"))
+
+/** Main column order: Experience → Entrepreneurship → Education. */
+export const portfolioExperiences: Experience[] = [
+  ...workExperiences,
+  ...entrepreneurshipExperiences,
+  ...educationExperiences,
+]
 
 export const skillsSection = {
   title: "SKILLS",

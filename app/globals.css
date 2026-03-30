@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
-/* Explicit scan paths so utilities are generated reliably (Tailwind v4 + Next.js). */
-@source "./**/*.{js,ts,jsx,tsx,mdx}";
+/*
+ * Tailwind v4 @source paths are relative to this file (app/globals.css).
+ * Avoid a single recursive glob from repo root: it can match .next output and
+ * overload PostCSS in dev (500 on layout.css). Use explicit app, components, lib, hooks.
+ */
+@source "../app/**/*.{js,ts,jsx,tsx,mdx}";
 @source "../components/**/*.{js,ts,jsx,tsx,mdx}";
 @source "../lib/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../hooks/**/*.{js,ts,jsx,tsx,mdx}";
 
 @import "tw-animate-css";
 

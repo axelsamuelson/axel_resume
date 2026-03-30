@@ -8,6 +8,7 @@ import {
   certificationsSection,
   contactDetails,
   educationExperiences,
+  entrepreneurshipExperiences,
   languagesSection,
   skillsSection,
   workExperiences,
@@ -105,6 +106,15 @@ export default function CvPage() {
               <SectionTitle>Work experience</SectionTitle>
               <div className="mt-1">
                 {workExperiences.map((exp) => (
+                  <ExperienceBlock key={exp.id} exp={exp} />
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-10 print:mt-8">
+              <SectionTitle>Entrepreneurship</SectionTitle>
+              <div className="mt-1">
+                {entrepreneurshipExperiences.map((exp) => (
                   <ExperienceBlock key={exp.id} exp={exp} />
                 ))}
               </div>

@@ -13,7 +13,7 @@ import {
   certificationsSection,
   contactDetails,
   educationExperiences,
-  experiences,
+  entrepreneurshipExperiences,
   languagesSection,
   skillsSection,
   workExperiences,
@@ -126,6 +126,22 @@ export default function Page() {
                   </div>
 
                   <div className="mt-8">
+                    <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">ENTREPRENEURSHIP</p>
+                    <ul className="grid grid-cols-1 gap-x-4 gap-y-2.5 text-base font-bold leading-tight text-white/25 sm:grid-cols-2 sm:text-lg">
+                      {entrepreneurshipExperiences.map((exp) => (
+                        <li key={exp.id}>
+                          <Link
+                            href={`#${exp.id}`}
+                            className="transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 rounded-sm"
+                          >
+                            {exp.linkLabel}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-8">
                     <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">EDUCATION</p>
                     <ul className="grid grid-cols-1 gap-x-4 gap-y-2.5 text-base font-bold leading-tight text-white/25 sm:grid-cols-2 sm:text-lg">
                       {educationExperiences.map((exp) => (
@@ -180,7 +196,10 @@ export default function Page() {
           </aside>
 
           <div className="space-y-4">
-            {experiences.map((exp, idx) => (
+            <div className="px-1 pt-1">
+              <p className="text-xs font-semibold tracking-widest text-white/50">EXPERIENCE</p>
+            </div>
+            {workExperiences.map((exp, idx) => (
               <ProjectCard
                 key={exp.id}
                 id={exp.id}
@@ -194,6 +213,44 @@ export default function Page() {
                 gradientFrom={exp.gradientFrom}
                 gradientTo={exp.gradientTo}
                 revealDelay={idx * 0.05}
+              />
+            ))}
+            <div className="px-1 pt-6">
+              <p className="text-xs font-semibold tracking-widest text-white/50">ENTREPRENEURSHIP</p>
+            </div>
+            {entrepreneurshipExperiences.map((exp, idx) => (
+              <ProjectCard
+                key={exp.id}
+                id={exp.id}
+                title={exp.title}
+                period={exp.period}
+                summary={exp.summary}
+                bullets={exp.bullets}
+                imageSrc={exp.imageSrc}
+                tags={exp.tags}
+                priority={false}
+                gradientFrom={exp.gradientFrom}
+                gradientTo={exp.gradientTo}
+                revealDelay={(workExperiences.length + idx) * 0.05}
+              />
+            ))}
+            <div className="px-1 pt-6">
+              <p className="text-xs font-semibold tracking-widest text-white/50">EDUCATION</p>
+            </div>
+            {educationExperiences.map((exp, idx) => (
+              <ProjectCard
+                key={exp.id}
+                id={exp.id}
+                title={exp.title}
+                period={exp.period}
+                summary={exp.summary}
+                bullets={exp.bullets}
+                imageSrc={exp.imageSrc}
+                tags={exp.tags}
+                priority={false}
+                gradientFrom={exp.gradientFrom}
+                gradientTo={exp.gradientTo}
+                revealDelay={(workExperiences.length + entrepreneurshipExperiences.length + idx) * 0.05}
               />
             ))}
           </div>
