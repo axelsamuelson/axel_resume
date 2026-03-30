@@ -60,14 +60,11 @@ export const experiences: Experience[] = [
     title: "Head of Growth - CDLP, Stockholm",
     period: "Dec 2024 – Nov 2025",
     summary:
-      "Responsible for CDLP's overall growth strategy, spanning paid media, lifecycle marketing, analytics, and international market expansion. Own both revenue and profit targets, with a reporting framework built around CAC, contribution margin, and category-level performance across Dema, Qlik, and Shopify Analytics. From November 2025, the growth function continued through Orange Juice Ecommerce Agency, where CDLP is a key client.",
+      "Responsible for CDLP's overall growth strategy, spanning paid media, lifecycle marketing, analytics, and international market expansion. Owned both revenue and profit targets, with a reporting framework built around CAC, contribution margin, and category-level performance across Dema, Qlik, and Shopify Analytics. From November 2025, the growth function continued through Orange Juice Ecommerce Agency, where CDLP is a key client.",
     bullets: [
-      "Scaled core product categories 80% YoY through targeted segmentation, channel optimization, and cross-sell strategies",
-      "Increased New Customer ROAS from below 1 to above 3, while reducing CAC by 50%",
-      "Developed behavioral segmentation models distinguishing full-price from discount-driven buyers to sharpen targeting and protect margins",
-      "Reallocated budget from a performance-heavy split (70/30) toward a brand-led model to counter declining organic reach and build long-term equity",
-      "Unified product, brand, and storytelling into a coherent cross-channel content strategy",
-      "Transitioned reporting from isolated performance metrics to a profit- and retention-aligned growth framework",
+      "Reversed a declining new customer acquisition trend within the first three months, returning the brand to growth through structural changes across paid media, channel mix, and targeting strategy",
+      "Identified critical bottlenecks across the full marketing funnel and developed growth strategies spanning acquisition, conversion, retention, and brand positioning",
+      "Led CDLP's transition away from a discount-driven commercial model toward a full-price focus, resulting in the brand's strongest full-price trading period since its founding",
     ],
     tags: ["Work", "Growth", "DTC"],
     imageSrc: "/images/cdlp.webp",
