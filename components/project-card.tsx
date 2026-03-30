@@ -1,99 +1,112 @@
-import Link from "next/link"
-import { ArrowRight } from 'lucide-react'
-import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import RevealOnView from "@/components/reveal-on-view"
-import ProjectCardImage from "@/components/project-card-image"
 
 type Props = {
+  id?: string
   title?: string
-  subtitle?: string
+  period?: string
+  summary?: string
+  bullets?: string[]
   imageSrc?: string
   tags?: string[]
-  href?: string
   priority?: boolean
   gradientFrom?: string
   gradientTo?: string
-  imageContainerClassName?: string
-  containerClassName?: string
   revealDelay?: number
+  containerClassName?: string
 }
 
-// Server Component (no client hooks)
 export default function ProjectCard({
-  title = "Project title",
-  subtitle = "Project subtitle",
-  imageSrc = "/placeholder.svg?height=720&width=1280",
-  tags = ["Design", "Web"],
-  href = "#",
+  id,
+  title = "Role title",
+  period,
+  summary,
+  bullets = [],
+  imageSrc = "/placeholder.jpg",
+  tags = [],
   priority = false,
   gradientFrom = "#0f172a",
   gradientTo = "#6d28d9",
-  imageContainerClassName,
-  containerClassName,
   revealDelay = 0,
+  containerClassName,
 }: Props) {
   return (
-    <article className={cn("group relative", containerClassName)}>
-      <div
-        className="rounded-3xl border border-white/10 p-1 shadow-[0_10px_60px_-10px_rgba(0,0,0,0.6)] lg:h-full"
-        style={{
-          backgroundImage: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
-        }}
-      >
-        <div className="relative overflow-hidden rounded-[1.35rem] bg-black lg:h-full">
-          {/* Image stays outside RevealOnView so it is never opacity:0 (fixes hidden / unloaded images). */}
-          <div
-            className={cn(
-              "relative z-0 min-h-[14rem] w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:min-h-0 lg:h-full",
-              imageContainerClassName
-            )}
-          >
-            <ProjectCardImage
-              src={imageSrc || "/placeholder.svg"}
-              alt={title}
-              priority={priority}
-              className="object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/30" />
-          </div>
-
-          <RevealOnView
-            delay={revealDelay}
-            variant="media"
-            className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between"
-          >
-            <div className="flex flex-wrap gap-2 p-4 sm:p-5">
-              {tags.map((t) => (
-                <Badge
-                  key={t}
-                  variant="secondary"
-                  className="pointer-events-auto bg-black/50 text-white border-white/20 backdrop-blur-sm"
-                >
-                  {t}
-                </Badge>
-              ))}
+    <article id={id} className={cn("scroll-mt-6", containerClassName)}>
+      <RevealOnView delay={revealDelay} variant="media">
+        <div
+          className="rounded-3xl border border-white/10 p-1 shadow-[0_10px_60px_-10px_rgba(0,0,0,0.6)]"
+          style={{
+            backgroundImage: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`,
+          }}
+        >
+          <div className="relative min-h-[min(72vh,640px)] overflow-hidden rounded-[1.35rem] lg:min-h-[calc(100svh-2rem)]">
+            <div className="absolute inset-0 z-0">
+              <Image
+                src={imageSrc}
+                alt={title}
+                fill
+                sizes="(max-width: 1024px) 100vw, min(1200px, 70vw)"
+                className="object-cover"
+                priority={priority}
+              />
             </div>
 
-            <div className="p-4 sm:p-5">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold sm:text-xl">{title}</h3>
-                  <p className="text-sm text-white/70">{subtitle}</p>
-                </div>
-                <Link
-                  href={href}
-                  className="pointer-events-auto inline-flex items-center gap-2 self-start rounded-full bg-white/10 px-3 py-2 text-sm font-medium backdrop-blur transition-colors hover:bg-white/20 sm:self-auto"
-                  aria-label={`Open case study: ${title}`}
-                >
-                  Case study
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+            <div
+              className="pointer-events-none absolute inset-0 opacity-35 mix-blend-soft-light"
+              style={{
+                background: `linear-gradient(135deg, ${gradientFrom}99, ${gradientTo}66)`,
+              }}
+              aria-hidden
+            />
+
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-[12%] via-black/48 via-[40%] to-black/[0.96]"
+              aria-hidden
+            />
+
+            <div className="relative z-10 flex min-h-full w-full flex-col items-center justify-end px-4 pb-8 pt-28 sm:px-6 sm:pb-10 sm:pt-36 lg:px-8 lg:pb-12 lg:pt-40">
+              <div className="w-full max-w-2xl rounded-xl border border-white/[0.08] bg-black/25 px-5 py-6 backdrop-blur-sm sm:rounded-xl sm:px-6 sm:py-7">
+                {tags.length > 0 ? (
+                  <p className="mb-5 text-xs font-medium tracking-wide text-white/45">
+                    {tags.join(" · ")}
+                  </p>
+                ) : null}
+
+                <header>
+                  <h2 className="text-balance text-lg font-medium leading-snug tracking-tight text-white sm:text-xl">
+                    {title}
+                  </h2>
+                  {period ? (
+                    <p className="mt-2 text-sm text-white/50">{period}</p>
+                  ) : null}
+                </header>
+
+                {summary ? (
+                  <p className="mt-5 text-sm leading-relaxed text-white/75 sm:text-[15px] sm:leading-[1.65]">
+                    {summary}
+                  </p>
+                ) : null}
+
+                {bullets.length > 0 ? (
+                  <ul
+                    className={cn(
+                      "space-y-3 border-l border-white/10 pl-4 text-sm leading-relaxed text-white/75 sm:text-[15px]",
+                      summary ? "mt-6" : "mt-5"
+                    )}
+                  >
+                    {bullets.map((b, i) => (
+                      <li key={i} className="pl-1">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
             </div>
-          </RevealOnView>
+          </div>
         </div>
-      </div>
+      </RevealOnView>
     </article>
   )
 }

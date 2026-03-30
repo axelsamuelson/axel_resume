@@ -5,6 +5,9 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "dev:turbopack": "next dev --turbopack",
+    "dev:restart": "(lsof -tiTCP:3000 -sTCP:LISTEN | xargs kill -9) 2>/dev/null || true; next dev",
+    "dev:clean": "rm -rf .next && next dev",
     "lint": "next lint",
     "start": "next start"
   },

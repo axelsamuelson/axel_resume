@@ -127,3 +127,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* CV / resume: browser Print → Save as PDF */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+}

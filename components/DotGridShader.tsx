@@ -1,7 +1,9 @@
 "use client"
+
+import type { ComponentProps } from "react"
 import { DotGrid } from "@paper-design/shaders-react"
 
-type DotGridShaderProps = React.ComponentProps<typeof DotGrid>
+type DotGridShaderProps = ComponentProps<typeof DotGrid>
 
 export default function DotGridShader(props: DotGridShaderProps) {
   return (
