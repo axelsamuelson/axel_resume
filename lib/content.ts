@@ -19,14 +19,14 @@ export const site = {
 export const headline = ["Building profitable DTC brands,", "from acquisition to P&L."];
 
 export const about =
-  "Growth leader with 10+ years building and scaling growth for premium DTC e-commerce across paid media, SEO, CRO, CRM and analytics. I steer growth on contribution margin and full-price demand, work closely with finance on budget allocation and P&L, and build my own data and AI tooling to shorten the path from insight to action.";
+  "Growth leader with 10+ years building and scaling growth for premium DTC e-commerce across paid media, SEO, CRO, CRM and analytics. I steer growth on absolute contribution and full-price demand, work closely with finance on budget allocation and P&L, and build my own data and AI tooling to shorten the path from insight to action.";
 
 export const now =
   "Leading growth for C'est Normal and CDLP via Orange Juice Ecommerce Agency, and building PACT, a wine marketplace I founded in 2025.";
 
 export const highlights = [
-  { value: "+84%", label: "contribution margin YoY", context: "C'est Normal, first 4.5 months" },
-  { value: "+27%", label: "contribution margin on 48% lower media spend", context: "CDLP, first 12 months" },
+  { value: "+84%", label: "growth in absolute contribution (CM3) YoY", context: "C'est Normal, first 4.5 months" },
+  { value: "+27%", label: "growth in absolute contribution (CM3) on 48% lower media spend", context: "CDLP, first 12 months" },
   { value: "+16%", label: "full-price sales above the brand's all-time high", context: "CDLP, rolling 12 months" },
 ];
 
@@ -70,9 +70,9 @@ export const experience: Role[] = [
         intro:
           "Swedish DTC menswear brand (jeans, shorts, sneakers). I took over growth when the brand was profitable but Nordic-dependent (39% of net sales in SE + NO), discount-heavy and almost fully reliant on Meta. I own paid media, growth strategy, measurement, profitability steering and creative strategy.",
         results: [
-          "Grew contribution margin (CM3) by +84% on +61% net sales, lifting CM3 margin by 2.8 pp.",
+          "Grew absolute contribution (CM3) by +84% on +61% net sales, while also lifting the CM3 margin by 2.8 pp.",
           "Grew full-price revenue by +94% while cutting the discounted share of net sales by ~8 pp. Outside sale periods the share fell ~7 pp, so growth was not bought with markdowns.",
-          "Doubled monthly media investment and turned it into +54% new customers. Acquisition got more expensive at scale, but the extra spend paid back in absolute contribution margin.",
+          "Doubled monthly media investment and turned it into +54% new customers. Acquisition got more expensive at scale, but the extra spend paid back in absolute contribution.",
         ],
         how: [
           "Restructured the Meta account by folding US and DE into the global campaign, which delivered the year's strongest US performance. Markets are isolated only when they can sustain learning-phase volume on their own.",
@@ -96,7 +96,7 @@ export const experience: Role[] = [
       "CDLP is a premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022. I reset the growth model around full-price demand and profitability by changing how media is bought, which categories and markets get investment, and how performance is reported. I report weekly to the Head of Ecommerce and the CFO, with aMER as north-star metric.",
     results: [
       "Full-price sales at an all-time high: rolling 12-month full-price revenue is now 16% above the previous record from 2021, which was broken in February 2026.",
-      "Grew contribution margin (CM3) by +27% and CM3 margin by 10 pp in my first 12 months, while cutting media spend by 48% with net sales nearly flat (−2%).",
+      "Grew absolute contribution (CM3) by +27% and the CM3 margin by 10 pp in my first 12 months, while cutting media spend by 48% with net sales nearly flat (−2%).",
       "Cut nCAC by 42% and raised aMER by 72% over the same period.",
     ],
     how: [
@@ -271,12 +271,12 @@ export const languages = "Swedish (native) · English (fluent)";
 // Short versions used on the printable /cv page.
 export const cvShort: Record<string, string[]> = {
   "orange-juice": [
-    "C'est Normal (client, Jul 2026 –): +84% CM3, +61% net sales and +94% full-price revenue YoY in 4.5 months, with discount share down ~8 pp. Doubled media investment profitably (+54% new customers).",
+    "C'est Normal (client, Jul 2026 –): +84% absolute contribution (CM3), +61% net sales and +94% full-price revenue YoY in 4.5 months, with discount share down ~8 pp. Doubled media investment profitably (+54% new customers).",
     "Rebuilt Meta account structure and measurement (delivery vs. shipping geo), set market-specific CAC targets and a phased Google Ads roadmap.",
   ],
   cdlp: [
     "All-time-high full-price sales: rolling 12 months +16% above the 2021 record.",
-    "First year: +27% CM3 (+10 pp margin) on 48% lower media spend with net sales flat; nCAC −42%, aMER +72%.",
+    "First year: +27% absolute contribution (CM3), +10 pp CM3 margin, on 48% lower media spend with net sales flat; nCAC −42%, aMER +72%.",
     "Shifted focus from markdowns to full-price winners; rebuilt Meta into an Advantage+/CBO hybrid with a geo-mix-adjusted CPMr model; built an AI copy system with nine product skills.",
   ],
 };
