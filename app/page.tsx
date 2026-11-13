@@ -1,264 +1,270 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, FileDown } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import DotGridShaderClient from "@/components/dot-grid-shader-client"
-
-import ProjectCard from "@/components/project-card"
-import AnimatedHeading from "@/components/animated-heading"
-import RevealOnView from "@/components/reveal-on-view"
 import {
+  site,
+  headline,
   about,
-  certificationsSection,
-  contactDetails,
-  educationExperiences,
-  entrepreneurshipExperiences,
-  languagesSection,
-  skillsSection,
-  workExperiences,
-} from "@/lib/cv-data"
+  now,
+  highlights,
+  experience,
+  ventures,
+  earlier,
+  education,
+  skills,
+  certifications,
+  languages,
+  type Role,
+} from "@/lib/content";
 
-export default function Page() {
+function Bullets({ items, className }: { items: string[]; className?: string }) {
   return (
-    <main className="bg-neutral-950 text-white">
-      <section className="px-4 pt-4 pb-16 lg:pb-4">
-        <div className="grid h-full grid-cols-1 gap-4 lg:grid-cols-[480px_1fr]">
-          <aside className="lg:sticky lg:top-4 lg:max-h-[calc(100svh-2rem)] lg:self-start">
-            <div className="relative flex max-h-[calc(100svh-2rem)] flex-col overflow-y-auto overflow-x-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 sm:p-8">
-              <div className="pointer-events-none absolute inset-0 z-0 opacity-5 mix-blend-soft-light">
-                <DotGridShaderClient />
-              </div>
-              <RevealOnView
-                as="div"
-                intensity="hero"
-                className="relative z-10 flex flex-col gap-10"
-                staggerChildren
-              >
-                <div>
-                  <div className="mb-8 flex items-center gap-4 sm:gap-5">
-                    <div
-                      className="shrink-0 w-[5.5rem] rounded-2xl border border-white/10 p-0.5 shadow-[0_10px_60px_-10px_rgba(0,0,0,0.6)] sm:w-24"
-                      style={{
-                        backgroundImage: "linear-gradient(135deg, #0f172a, #6d28d9)",
-                      }}
-                    >
-                      <div className="relative aspect-square w-full overflow-hidden rounded-[1.15rem] bg-black">
-                        <Image
-                          src="/images/axel_profile_picture.jpeg"
-                          alt="Axel Samuelson"
-                          fill
-                          className="object-cover"
-                          sizes="96px"
-                          priority
-                        />
-                      </div>
-                    </div>
-                    <div className="min-w-0 leading-[1.1]">
-                      <span className="block text-2xl font-extrabold tracking-tight">axel</span>
-                      <div className="mt-0.5 flex items-center gap-2">
-                        <span className="text-2xl font-extrabold tracking-tight">samuelson</span>
-                        <span
-                          className="h-2 w-2 shrink-0 rounded-full bg-white/60"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </div>
-                  </div>
+    <ul className={`bullets ${className ?? ""}`}>
+      {items.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  );
+}
 
-                  <AnimatedHeading
-                    className="text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl"
-                    lines={["Building profitable DTC brands,", "from acquisition to P&L."]}
-                  />
-
-                  <p className="mt-4 max-w-[48ch] text-sm leading-relaxed text-white/70 sm:text-base">{about}</p>
-
-                  <div className="mt-6 space-y-2 border-t border-white/10 pt-6 text-sm text-white/70">
-                    <p className="text-xs font-semibold tracking-widest text-white/50">CONTACT</p>
-                    <p>
-                      <a
-                        href={`mailto:${contactDetails.email}`}
-                        className="text-white/85 underline decoration-white/25 underline-offset-2 transition-colors hover:text-white hover:decoration-white/50"
-                      >
-                        {contactDetails.email}
-                      </a>
-                    </p>
-                    <p>
-                      <a
-                        href={`tel:${contactDetails.phoneHref}`}
-                        className="text-white/85 underline decoration-white/25 underline-offset-2 transition-colors hover:text-white hover:decoration-white/50"
-                      >
-                        {contactDetails.phone}
-                      </a>
-                    </p>
-                    <p className="text-white/80">{contactDetails.location}</p>
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap items-center gap-3">
-                    <Button asChild size="lg" className="rounded-full">
-                      <Link href={`mailto:${contactDetails.email}`}>
-                        Get in touch
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-                      <Link href="/cv">
-                        <FileDown className="mr-2 h-4 w-4" />
-                        CV som PDF
-                      </Link>
-                    </Button>
-                  </div>
-
-                  <div className="mt-10">
-                    <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">EXPERIENCE</p>
-                    <ul className="grid grid-cols-1 gap-x-4 gap-y-2.5 text-base font-bold leading-tight text-white/25 sm:grid-cols-2 sm:text-lg">
-                      {workExperiences.map((exp) => (
-                        <li key={exp.id}>
-                          <Link
-                            href={`#${exp.id}`}
-                            className="transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 rounded-sm"
-                          >
-                            {exp.linkLabel}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-8">
-                    <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">ENTREPRENEURSHIP</p>
-                    <ul className="grid grid-cols-1 gap-x-4 gap-y-2.5 text-base font-bold leading-tight text-white/25 sm:grid-cols-2 sm:text-lg">
-                      {entrepreneurshipExperiences.map((exp) => (
-                        <li key={exp.id}>
-                          <Link
-                            href={`#${exp.id}`}
-                            className="transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 rounded-sm"
-                          >
-                            {exp.linkLabel}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-8">
-                    <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">EDUCATION</p>
-                    <ul className="grid grid-cols-1 gap-x-4 gap-y-2.5 text-base font-bold leading-tight text-white/25 sm:grid-cols-2 sm:text-lg">
-                      {educationExperiences.map((exp) => (
-                        <li key={exp.id}>
-                          <Link
-                            href={`#${exp.id}`}
-                            className="transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 rounded-sm"
-                          >
-                            {exp.linkLabel}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-10 space-y-6 border-t border-white/10 pt-10">
-                    <div>
-                      <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">
-                        {skillsSection.title}
-                      </p>
-                      <dl className="space-y-3 text-sm text-white/70">
-                        {skillsSection.blocks.map((b) => (
-                          <div key={b.label}>
-                            <dt className="font-semibold text-white/85">{b.label}</dt>
-                            <dd className="mt-0.5 leading-relaxed">{b.text}</dd>
-                          </div>
-                        ))}
-                      </dl>
-                    </div>
-
-                    <div>
-                      <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">
-                        {certificationsSection.title}
-                      </p>
-                      <ul className="space-y-2 text-sm leading-relaxed text-white/70">
-                        {certificationsSection.items.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <p className="mb-3 text-xs font-semibold tracking-widest text-white/50">
-                        {languagesSection.title}
-                      </p>
-                      <p className="text-sm text-white/70">{languagesSection.text}</p>
-                    </div>
-                  </div>
-                </div>
-              </RevealOnView>
-            </div>
-          </aside>
-
-          <div className="space-y-4">
-            <div className="px-1 pt-1">
-              <p className="text-xs font-semibold tracking-widest text-white/50">EXPERIENCE</p>
-            </div>
-            {workExperiences.map((exp, idx) => (
-              <ProjectCard
-                key={exp.id}
-                id={exp.id}
-                title={exp.title}
-                period={exp.period}
-                summary={exp.summary}
-                bullets={exp.bullets}
-                imageSrc={exp.imageSrc}
-                tags={exp.tags}
-                links={exp.links}
-                priority={idx === 0}
-                gradientFrom={exp.gradientFrom}
-                gradientTo={exp.gradientTo}
-                revealDelay={idx * 0.05}
-              />
-            ))}
-            <div className="px-1 pt-6">
-              <p className="text-xs font-semibold tracking-widest text-white/50">ENTREPRENEURSHIP</p>
-            </div>
-            {entrepreneurshipExperiences.map((exp, idx) => (
-              <ProjectCard
-                key={exp.id}
-                id={exp.id}
-                title={exp.title}
-                period={exp.period}
-                summary={exp.summary}
-                bullets={exp.bullets}
-                imageSrc={exp.imageSrc}
-                tags={exp.tags}
-                links={exp.links}
-                priority={false}
-                gradientFrom={exp.gradientFrom}
-                gradientTo={exp.gradientTo}
-                revealDelay={(workExperiences.length + idx) * 0.05}
-              />
-            ))}
-            <div className="px-1 pt-6">
-              <p className="text-xs font-semibold tracking-widest text-white/50">EDUCATION</p>
-            </div>
-            {educationExperiences.map((exp, idx) => (
-              <ProjectCard
-                key={exp.id}
-                id={exp.id}
-                title={exp.title}
-                period={exp.period}
-                summary={exp.summary}
-                bullets={exp.bullets}
-                imageSrc={exp.imageSrc}
-                tags={exp.tags}
-                links={exp.links}
-                priority={false}
-                gradientFrom={exp.gradientFrom}
-                gradientTo={exp.gradientTo}
-                revealDelay={(workExperiences.length + entrepreneurshipExperiences.length + idx) * 0.05}
-              />
-            ))}
-          </div>
+function RoleCard({ role }: { role: Role }) {
+  return (
+    <article className="card" id={role.id}>
+      {role.image && (
+        <div className="card-media">
+          <img src={role.image} alt="" loading="lazy" />
         </div>
-      </section>
-    </main>
-  )
+      )}
+      <div className="card-body">
+        <p className="eyebrow">{role.tags}</p>
+        <h3 className="card-title">
+          {role.title} <span className="at">· {role.company}</span>
+        </h3>
+        <p className="period">
+          {role.period} · {role.location}
+        </p>
+        {role.links && (
+          <p className="links">
+            {role.links.map((l) => (
+              <a key={l.href} href={l.href} target="_blank" rel="noopener">
+                {l.label} ↗
+              </a>
+            ))}
+          </p>
+        )}
+        <p className="summary">{role.summary}</p>
+        {role.results && (
+          <>
+            <p className="label">{role.cases ? "Highlights" : "Results"}</p>
+            <Bullets items={role.results} className="results" />
+          </>
+        )}
+        {role.how && (
+          <details className="how">
+            <summary>How I did it</summary>
+            <Bullets items={role.how} />
+          </details>
+        )}
+        {role.cases?.map((c) => (
+          <div className="case" key={c.heading}>
+            <p className="case-title">
+              {c.heading} <span className="period">· {c.meta}</span>
+            </p>
+            {c.intro && <p className="summary">{c.intro}</p>}
+            {c.results && (
+              <>
+                <p className="label">Results, first 4.5 months vs. same period last year</p>
+                <Bullets items={c.results} className="results" />
+              </>
+            )}
+            {c.how && (
+              <details className="how">
+                <summary>How I did it</summary>
+                <Bullets items={c.how} />
+              </details>
+            )}
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  image: `${site.url}/images/axel.webp`,
+  jobTitle: "Head of Growth",
+  description: site.description,
+  address: { "@type": "PostalAddress", addressLocality: "Stockholm", addressCountry: "SE" },
+  worksFor: { "@type": "Organization", name: "Orange Juice Ecommerce Agency" },
+  founder: { "@type": "Organization", name: "PACT", url: "https://pactwines.com/" },
+  alumniOf: { "@type": "EducationalOrganization", name: "IHM Business School" },
+  knowsAbout: ["Growth marketing", "DTC e-commerce", "Paid media", "SEO", "CRO", "Marketing analytics", "Contribution margin"],
+  ...(site.linkedin ? { sameAs: [site.linkedin] } : {}),
+};
+
+export default function Home() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <a className="skip" href="#main">
+        Skip to content
+      </a>
+      <div className="shell">
+        <aside className="sidebar">
+          <div className="id">
+            <img className="avatar" src="/images/axel.webp" alt="Axel Samuelson" width={88} height={88} />
+            <div>
+              <p className="name">{site.name}</p>
+              <p className="role">{site.role}</p>
+            </div>
+          </div>
+
+          <div className="contact">
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={site.phoneHref}>{site.phone}</a>
+            {site.linkedin && (
+              <a href={site.linkedin} target="_blank" rel="noopener">
+                LinkedIn ↗
+              </a>
+            )}
+            <span>{site.location}</span>
+          </div>
+
+          <div className="actions">
+            <a className="btn primary" href={`mailto:${site.email}`}>
+              Get in touch
+            </a>
+            <a className="btn" href="/cv">
+              CV (PDF)
+            </a>
+          </div>
+
+          <nav className="toc" aria-label="Sections">
+            <a href="#results">Results</a>
+            <a href="#experience">Experience</a>
+            <a href="#ventures">Founder</a>
+            <a href="#earlier">Earlier roles</a>
+            <a href="#skills">Skills & education</a>
+          </nav>
+        </aside>
+
+        <main id="main">
+          <header className="hero">
+            <h1>
+              {headline.map((l) => (
+                <span key={l}>{l}</span>
+              ))}
+            </h1>
+            <p className="about">{about}</p>
+            <p className="now">
+              <span className="dot" aria-hidden="true" /> <strong>Now:</strong> {now}
+            </p>
+          </header>
+
+          <section id="results" aria-labelledby="results-h">
+            <h2 id="results-h" className="section-h">
+              Selected results
+            </h2>
+            <div className="stats">
+              {highlights.map((h) => (
+                <div className="stat" key={h.label}>
+                  <p className="stat-value">{h.value}</p>
+                  <p className="stat-label">{h.label}</p>
+                  <p className="stat-context">{h.context}</p>
+                </div>
+              ))}
+            </div>
+            <p className="logos">
+              Brands & clients: CDLP · C&apos;est Normal · Sneakersnstuff · Klarna · OKQ8 · UNICEF · Husqvarna
+            </p>
+          </section>
+
+          <section id="experience" aria-labelledby="exp-h">
+            <h2 id="exp-h" className="section-h">
+              Experience
+            </h2>
+            {experience.map((r) => (
+              <RoleCard key={r.id} role={r} />
+            ))}
+          </section>
+
+          <section id="ventures" aria-labelledby="ven-h">
+            <h2 id="ven-h" className="section-h">
+              Founder
+            </h2>
+            {ventures.map((r) => (
+              <RoleCard key={r.id} role={r} />
+            ))}
+          </section>
+
+          <section id="earlier" aria-labelledby="ear-h">
+            <h2 id="ear-h" className="section-h">
+              Earlier roles
+            </h2>
+            <div className="list">
+              {earlier.map((e) => (
+                <div className="row" key={e.title + e.company}>
+                  <div className="row-head">
+                    <p className="row-title">
+                      {e.title} <span className="at">· {e.company}</span>
+                    </p>
+                    <p className="period">{e.period}</p>
+                  </div>
+                  <p className="row-text">{e.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="skills" aria-labelledby="sk-h">
+            <h2 id="sk-h" className="section-h">
+              Skills
+            </h2>
+            <dl className="skills">
+              {skills.map((s) => (
+                <div key={s.group}>
+                  <dt>{s.group}</dt>
+                  <dd>{s.items}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="two-col">
+              <div>
+                <h2 className="section-h">Education</h2>
+                {education.map((e) => (
+                  <div className="row" key={e.title}>
+                    <p className="row-title">{e.title}</p>
+                    <p className="period">
+                      {e.school} · {e.period}
+                    </p>
+                    {e.text && <p className="row-text">{e.text}</p>}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <h2 className="section-h">Certifications</h2>
+                <ul className="plain">
+                  {certifications.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+                <h2 className="section-h">Languages</h2>
+                <p className="row-text">{languages}</p>
+              </div>
+            </div>
+          </section>
+
+          <footer className="footer">
+            <p>Open to conversations about senior growth roles and advisory work.</p>
+            <a className="btn primary" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
+            <p className="fine">© 2026 {site.name}</p>
+          </footer>
+        </main>
+      </div>
+    </>
+  );
 }

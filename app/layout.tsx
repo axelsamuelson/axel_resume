@@ -1,33 +1,37 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata, Viewport } from "next"
+import { site } from "@/lib/content"
+import "./globals.css"
+import "./site.css"
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  alternates: { canonical: "/" },
+  authors: [{ name: site.name }],
+  openGraph: {
+    type: "profile",
+    url: site.url,
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image", title: site.title, description: site.description },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export const viewport: Viewport = { themeColor: "#0b0b0c", colorScheme: "dark" }
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
           rel="stylesheet"
         />
-        <style>{`
-:root {
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-html { font-family: var(--font-sans); }
-        `}</style>
       </head>
       <body>{children}</body>
     </html>

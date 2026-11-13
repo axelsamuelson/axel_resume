@@ -1,30 +1,13 @@
-# Portfolio template design
+# axelsamuelson.com
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Personal CV site (Next.js, deployed on Vercel).
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/lenxisms-projects/v0-portfolio-template-design)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/0INS7N2xMca)
+- **All copy** lives in `lib/content.ts`: profile, headline results, roles, skills and the short bullets used on `/cv`.
+- **LinkedIn**: set `site.linkedin` in `lib/content.ts` and the link appears in the sidebar, on `/cv` and in the structured data.
+- **Printable CV**: `/cv` → "Save as PDF".
+- Styles: `app/site.css` (site) and `app/cv/cv.css` (print CV).
 
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/lenxisms-projects/v0-portfolio-template-design](https://vercel.com/lenxisms-projects/v0-portfolio-template-design)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/0INS7N2xMca](https://v0.dev/chat/projects/0INS7N2xMca)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+```bash
+npm install
+npm run dev
+```

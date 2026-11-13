@@ -1,0 +1,39 @@
+html:has(.cv-wrap) { color-scheme: light; }
+.cv-wrap { background: #e9e9ec; min-height: 100vh; padding: 24px 16px 48px; color: #18181b; }
+.cv-bar { max-width: 210mm; margin: 0 auto 16px; display: flex; justify-content: space-between; align-items: center; }
+.cv-bar a { color: #3f3f46; text-decoration: none; font-size: 14px; }
+.cv-bar button { font: inherit; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 0; background: #18181b; color: #fff; cursor: pointer; }
+.cv { max-width: 210mm; margin: 0 auto; background: #fff; padding: 14mm 15mm; font-size: 10.5pt; line-height: 1.45; box-shadow: 0 2px 16px rgba(0,0,0,.08); }
+.cv a { color: inherit; }
+.cv h1 { margin: 0; font-size: 24pt; letter-spacing: -0.02em; line-height: 1.1; color: #09090b; }
+.cv h2 { margin: 14px 0 6px; font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase; color: #059669; border-bottom: 1px solid #e4e4e7; padding-bottom: 3px; }
+.cv-head { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; }
+.cv-role { margin-top: 4px; font-weight: 600; }
+.cv-tag { margin-top: 2px; color: #52525b; }
+.cv-contact { text-align: right; font-size: 9.5pt; color: #3f3f46; white-space: nowrap; }
+.cv-contact a { text-decoration: none; }
+.cv section > p { color: #27272a; }
+.cv-item { margin-bottom: 8px; break-inside: avoid; }
+.cv-item.compact { margin-bottom: 2px; }
+.cv-item-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.cv-item-title { font-weight: 700; color: #09090b; }
+.cv-period { font-size: 9.5pt; color: #71717a; white-space: nowrap; }
+.cv ul { margin: 3px 0 0; padding-left: 16px; }
+.cv li { margin: 1px 0; color: #27272a; }
+.cv-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+.cv-skill { margin: 0 0 3px; font-size: 9.5pt; color: #27272a; }
+@media (max-width: 640px) {
+  .cv { padding: 20px 16px; }
+  .cv-head { flex-direction: column; gap: 8px; }
+  .cv-contact { text-align: left; }
+  .cv-grid { grid-template-columns: 1fr; }
+  .cv-item-head { flex-direction: column; gap: 0; }
+}
+@page { size: A4; margin: 10mm 12mm; }
+@media print {
+  html, body { background: #fff !important; color-scheme: light; }
+  .no-print { display: none !important; }
+  .cv-wrap { background: #fff; padding: 0; }
+  .cv { box-shadow: none; padding: 0; max-width: none; font-size: 9.5pt; }
+  .cv a { text-decoration: none; }
+}
