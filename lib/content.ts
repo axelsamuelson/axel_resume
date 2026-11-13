@@ -279,17 +279,3 @@ export const certifications = [
 ];
 
 export const languages = "Swedish (native) · English (fluent)";
-
-// Short versions used on the printable /cv page.
-export const cvShort: Record<string, string[]> = {
-  "orange-juice": [
-    "Key clients: C'est Normal, CDLP and STIGA Sports.",
-    "C'est Normal (client, Jul 2026 –): +84% absolute contribution (CM3), +61% net sales and +94% full-price revenue YoY in 4.5 months, with discount share down ~8 pp. Reversed a declining new-customer trend (+54% new customers) while doubling media investment profitably.",
-    "Rebuilt Meta account structure and measurement (delivery vs. shipping geo), set market-specific CAC targets and a phased Google Ads roadmap.",
-  ],
-  cdlp: [
-    "All-time-high full-price sales: rolling 12 months +16% above the 2021 record.",
-    "First year: +27% absolute contribution (CM3), +10 pp CM3 margin, on 48% lower media spend with net sales flat; nCAC −42%, aMER +72%.",
-    "Shifted focus from markdowns to full-price winners; rebuilt Meta into an Advantage+/CBO hybrid with a geo-mix-adjusted CPMr model; built an AI copy system with nine product skills.",
-  ],
-};
