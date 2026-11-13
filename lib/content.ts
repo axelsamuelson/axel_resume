@@ -13,7 +13,7 @@ export const site = {
   location: "Stockholm, Sweden",
   // Add your LinkedIn URL here, e.g. "https://www.linkedin.com/in/your-handle/".
   // The link is shown everywhere as soon as this is filled in.
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/axel-samuelson-b54b6018/",
 };
 
 export const headline = ["Building profitable DTC brands,", "from acquisition to P&L."];
