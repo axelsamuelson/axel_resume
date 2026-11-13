@@ -25,12 +25,24 @@ export const now =
   "Leading growth for C'est Normal and CDLP via Orange Juice Ecommerce Agency, and building PACT, a wine marketplace I founded in 2025.";
 
 export const highlights = [
-  { value: "+84%", label: "growth in absolute contribution (CM3) YoY", context: "C'est Normal, first 4.5 months" },
-  { value: "+27%", label: "growth in absolute contribution (CM3) on 48% lower media spend", context: "CDLP, first 12 months" },
-  { value: "+16%", label: "full-price sales above the brand's all-time high", context: "CDLP, rolling 12 months" },
+  { value: "+84%", label: "growth in absolute contribution", context: "C'est Normal · first 4.5 months, YoY" },
+  { value: "+27%", label: "absolute contribution on half the media spend", context: "CDLP · first 12 months, YoY" },
+  { value: "+16%", label: "full-price sales above the all-time high", context: "CDLP · rolling 12 months" },
 ];
 
-export type Block = { company?: string; logo?: string; heading?: string; meta?: string; intro?: string; results?: string[]; how?: string[] };
+export type Metric = { value: string; label: string; context?: string };
+
+export type Block = {
+  company?: string;
+  logo?: string;
+  heading?: string;
+  meta?: string;
+  intro?: string;
+  metrics?: Metric[];
+  metricsNote?: string;
+  results?: string[];
+  how?: string[];
+};
 
 export type Role = {
   id: string;
@@ -44,8 +56,9 @@ export type Role = {
   logoFull?: boolean; // logo is a full square app icon: fill the tile edge to edge
   links?: { label: string; href: string }[];
   summary: string;
+  metrics?: Metric[];
+  metricsNote?: string;
   results?: string[];
-  resultsLabel?: string;
   how?: string[];
   cases?: Block[];
 };
@@ -60,7 +73,7 @@ export const experience: Role[] = [
     period: "Nov 2025 – Present",
     tags: "Consulting · Growth · DTC",
     summary:
-      "Orange Juice is an integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth end to end for a portfolio of clients and steer on new-customer revenue and contribution margin, not ROAS. Key clients: C'est Normal and CDLP (see below).",
+      "Integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth for a portfolio of clients and steer on new-customer revenue and contribution, not ROAS.",
     cases: [
       {
         company: "C'est Normal",
@@ -68,11 +81,12 @@ export const experience: Role[] = [
         heading: "Client case: C'est Normal",
         meta: "Jul 2026 – Present",
         intro:
-          "Swedish DTC menswear brand (jeans, shorts, sneakers). I took over growth when the brand was profitable but Nordic-dependent (39% of net sales in SE + NO), discount-heavy and almost fully reliant on Meta. I own paid media, growth strategy, measurement, profitability steering and creative strategy.",
-        results: [
-          "Grew absolute contribution (CM3) by +84% on +61% net sales, while also lifting the CM3 margin by 2.8 pp.",
-          "Grew full-price revenue by +94% while cutting the discounted share of net sales by ~8 pp. Outside sale periods the share fell ~7 pp, so growth was not bought with markdowns.",
-          "Doubled monthly media investment and turned it into +54% new customers. Acquisition got more expensive at scale, but the extra spend paid back in absolute contribution.",
+          "Swedish DTC menswear (jeans, shorts, sneakers). Profitable but Nordic-dependent (39% of net sales in SE + NO), discount-heavy and almost fully reliant on Meta when I took over. I own paid media, growth strategy, measurement, profitability and creative strategy.",
+        metricsNote: "First 4.5 months vs. same period last year",
+        metrics: [
+          { value: "+84%", label: "absolute contribution (CM3)", context: "on +61% net sales, CM3 margin +2.8 pp" },
+          { value: "+94%", label: "full-price revenue", context: "discounted share of sales −8 pp" },
+          { value: "+54%", label: "new customers", context: "media doubled, paid back in contribution" },
         ],
         how: [
           "Restructured the Meta account by folding US and DE into the global campaign, which delivered the year's strongest US performance. Markets are isolated only when they can sustain learning-phase volume on their own.",
@@ -93,11 +107,12 @@ export const experience: Role[] = [
     period: "Dec 2024 – Present",
     tags: "In-house, then via Orange Juice from Nov 2025",
     summary:
-      "CDLP is a premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022. I reset the growth model around full-price demand and profitability by changing how media is bought, which categories and markets get investment, and how performance is reported. I report weekly to the Head of Ecommerce and the CFO, with aMER as north-star metric.",
-    results: [
-      "Full-price sales at an all-time high: rolling 12-month full-price revenue is now 16% above the previous record from 2021, which was broken in February 2026.",
-      "Grew absolute contribution (CM3) by +27% and the CM3 margin by 10 pp in my first 12 months, while cutting media spend by 48% with net sales nearly flat (−2%).",
-      "Cut nCAC by 42% and raised aMER by 72% over the same period.",
+      "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. Weekly reporting to the Head of Ecommerce and the CFO, with aMER as north star.",
+    metricsNote: "First 12 months vs. prior year, full-price record as of Nov 2026",
+    metrics: [
+      { value: "+16%", label: "full-price sales above all-time high", context: "rolling 12 months, 2021 record broken Feb 2026" },
+      { value: "+27%", label: "absolute contribution (CM3)", context: "CM3 margin +10 pp, net sales flat (−2%)" },
+      { value: "−42%", label: "nCAC", context: "aMER +72% on 48% lower media spend" },
     ],
     how: [
       "Convinced the founders to move focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
@@ -123,7 +138,6 @@ export const experience: Role[] = [
       "Built go-to-market strategies for new product verticals that grew both revenue and profitability.",
       "Identified assortment gaps and built the commercial expansion strategy for SNS's own label.",
       "Led the e-commerce platform migration, owning data integrity and site architecture for SEO, analytics and scalable content.",
-      "Set up cross-functional processes that aligned marketing, product and infrastructure.",
     ],
   },
   {
@@ -139,7 +153,6 @@ export const experience: Role[] = [
       "Strategic lead on owned media for clients including OKQ8, UNICEF and Husqvarna, turning web, search and business data into SEO, CRO and site-architecture strategy.",
     results: [
       "Directed large-scale website migrations, improving information architecture, internal linking and content hierarchy.",
-      "Ran structured performance audits and prioritised initiatives with ICE scoring.",
       "Delivered conversion analyses that pinpointed friction and drove targeted CRO improvements.",
       "Repositioned owned media as a primary growth channel across several accounts.",
     ],
@@ -157,7 +170,6 @@ export const experience: Role[] = [
     results: [
       "Assembled and led a cross-functional growth team spanning sales, product, marketing, data and development.",
       "Built a content-led education layer that raised lead quality and removed friction from the sales process.",
-      "Integrated online and offline data into a full-journey marketing strategy that sharpened the value proposition.",
       "Improved top-of-funnel volume and sales conversion, and reduced early-stage churn.",
     ],
   },

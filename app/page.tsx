@@ -12,17 +12,8 @@ import {
   certifications,
   languages,
   type Role,
+  type Metric,
 } from "@/lib/content";
-
-function Bullets({ items, className }: { items: string[]; className?: string }) {
-  return (
-    <ul className={`bullets ${className ?? ""}`}>
-      {items.map((t) => (
-        <li key={t}>{t}</li>
-      ))}
-    </ul>
-  );
-}
 
 function Logo({ name, src, text, full, size = "md" }: { name: string; src?: string; text?: string; full?: boolean; size?: "md" | "sm" }) {
   const label = text ?? name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
@@ -33,22 +24,59 @@ function Logo({ name, src, text, full, size = "md" }: { name: string; src?: stri
   );
 }
 
-function RoleCard({ role }: { role: Role }) {
+function Metrics({ items, note }: { items: Metric[]; note?: string }) {
   return (
-    <article className="card" id={role.id}>
-      <div className="card-body">
-        <header className="card-head">
-          <Logo name={role.company} src={role.logo} text={role.logoText} full={role.logoFull} />
-          <div>
-            <p className="eyebrow">{role.tags}</p>
-            <h3 className="card-title">
-              {role.title} <span className="at">· {role.company}</span>
-            </h3>
-            <p className="period">
-              {role.period} · {role.location}
-            </p>
+    <div className="metrics-wrap">
+      <div className="metrics">
+        {items.map((m) => (
+          <div className="metric" key={m.label}>
+            <p className="metric-value">{m.value}</p>
+            <p className="metric-label">{m.label}</p>
+            {m.context && <p className="metric-context">{m.context}</p>}
           </div>
+        ))}
+      </div>
+      {note && <p className="metrics-note">{note}</p>}
+    </div>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="bullets">
+      {items.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  );
+}
+
+function How({ items }: { items: string[] }) {
+  return (
+    <details className="how">
+      <summary>
+        How I did it <span className="how-count">{items.length}</span>
+      </summary>
+      <Bullets items={items} />
+    </details>
+  );
+}
+
+function RoleItem({ role }: { role: Role }) {
+  return (
+    <li className="role" id={role.id}>
+      <div className="rail">
+        <Logo name={role.company} src={role.logo} text={role.logoText} full={role.logoFull} />
+      </div>
+      <div className="role-body">
+        <header className="role-head">
+          <div>
+            <h3 className="role-title">{role.title}</h3>
+            <p className="role-company">{role.company}</p>
+          </div>
+          <p className="role-period">{role.period}</p>
         </header>
+        {role.tags && <p className="role-tags">{role.tags}</p>}
         {role.links && (
           <p className="links">
             {role.links.map((l) => (
@@ -59,43 +87,28 @@ function RoleCard({ role }: { role: Role }) {
           </p>
         )}
         <p className="summary">{role.summary}</p>
-        {role.results && (
-          <>
-            <p className="label">{role.cases ? "Highlights" : "Results"}</p>
-            <Bullets items={role.results} className="results" />
-          </>
-        )}
-        {role.how && (
-          <details className="how">
-            <summary>How I did it</summary>
-            <Bullets items={role.how} />
-          </details>
-        )}
+        {role.metrics && <Metrics items={role.metrics} note={role.metricsNote} />}
+        {role.results && <Bullets items={role.results} />}
+        {role.how && <How items={role.how} />}
         {role.cases?.map((c) => (
           <div className="case" key={c.heading}>
             <div className="case-head">
               {c.company && <Logo name={c.company} src={c.logo} size="sm" />}
-              <p className="case-title">
-                {c.heading} <span className="period">· {c.meta}</span>
-              </p>
+              <div>
+                <p className="case-kicker">Client case</p>
+                <p className="case-title">
+                  {c.company} <span className="case-meta">· {c.meta}</span>
+                </p>
+              </div>
             </div>
             {c.intro && <p className="summary">{c.intro}</p>}
-            {c.results && (
-              <>
-                <p className="label">Results, first 4.5 months vs. same period last year</p>
-                <Bullets items={c.results} className="results" />
-              </>
-            )}
-            {c.how && (
-              <details className="how">
-                <summary>How I did it</summary>
-                <Bullets items={c.how} />
-              </details>
-            )}
+            {c.metrics && <Metrics items={c.metrics} note={c.metricsNote} />}
+            {c.results && <Bullets items={c.results} />}
+            {c.how && <How items={c.how} />}
           </div>
         ))}
       </div>
-    </article>
+    </li>
   );
 }
 
@@ -111,9 +124,16 @@ const jsonLd = {
   worksFor: { "@type": "Organization", name: "Orange Juice Ecommerce Agency" },
   founder: { "@type": "Organization", name: "PACT", url: "https://pactwines.com/" },
   alumniOf: { "@type": "EducationalOrganization", name: "IHM Business School" },
-  knowsAbout: ["Growth marketing", "DTC e-commerce", "Paid media", "SEO", "CRO", "Marketing analytics", "Contribution margin"],
+  knowsAbout: ["Growth marketing", "DTC e-commerce", "Paid media", "SEO", "CRO", "Marketing analytics", "Contribution"],
   ...(site.linkedin ? { sameAs: [site.linkedin] } : {}),
 };
+
+const nav = [
+  { href: "#results", label: "Results" },
+  { href: "#experience", label: "Experience" },
+  { href: "#founder", label: "Founder" },
+  { href: "#skills", label: "Skills" },
+];
 
 export default function Home() {
   return (
@@ -122,17 +142,52 @@ export default function Home() {
       <a className="skip" href="#main">
         Skip to content
       </a>
-      <div className="shell">
-        <aside className="sidebar">
-          <div className="id">
-            <img className="avatar" src="/images/axel.webp" alt="Axel Samuelson" width={88} height={88} />
+
+      <header className="topbar">
+        <div className="topbar-inner">
+          <a href="#top" className="brand">
+            {site.name}
+          </a>
+          <nav className="topnav" aria-label="Sections">
+            {nav.map((n) => (
+              <a key={n.href} href={n.href}>
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <div className="topbar-actions">
+            <a className="btn" href="/cv">
+              CV
+            </a>
+            <a className="btn primary" href={`mailto:${site.email}`}>
+              Contact
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main id="main" className="page">
+        <section className="hero" id="top">
+          <div className="hero-id">
+            <img className="avatar" src="/images/axel.webp" alt="Axel Samuelson" width={72} height={72} />
             <div>
-              <p className="name">{site.name}</p>
-              <p className="role">{site.role}</p>
+              <p className="hero-name">{site.name}</p>
+              <p className="hero-role">{site.role}</p>
             </div>
           </div>
-
-          <div className="contact">
+          <h1>
+            {headline.map((l) => (
+              <span key={l}>{l}</span>
+            ))}
+          </h1>
+          <p className="about">{about}</p>
+          <p className="now">
+            <span className="dot" aria-hidden="true" />
+            <span>
+              <strong>Now</strong> {now}
+            </span>
+          </p>
+          <p className="contact-line">
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <a href={site.phoneHref}>{site.phone}</a>
             {site.linkedin && (
@@ -141,142 +196,134 @@ export default function Home() {
               </a>
             )}
             <span>{site.location}</span>
-          </div>
+          </p>
+        </section>
 
-          <div className="actions">
-            <a className="btn primary" href={`mailto:${site.email}`}>
-              Get in touch
-            </a>
-            <a className="btn" href="/cv">
-              CV (PDF)
-            </a>
-          </div>
-
-          <nav className="toc" aria-label="Sections">
-            <a href="#results">Results</a>
-            <a href="#experience">Experience</a>
-            <a href="#ventures">Founder</a>
-            <a href="#earlier">Earlier roles</a>
-            <a href="#skills">Skills & education</a>
-          </nav>
-        </aside>
-
-        <main id="main">
-          <header className="hero">
-            <h1>
-              {headline.map((l) => (
-                <span key={l}>{l}</span>
-              ))}
-            </h1>
-            <p className="about">{about}</p>
-            <p className="now">
-              <span className="dot" aria-hidden="true" /> <strong>Now:</strong> {now}
-            </p>
-          </header>
-
-          <section id="results" aria-labelledby="results-h">
-            <h2 id="results-h" className="section-h">
-              Selected results
-            </h2>
-            <div className="stats">
-              {highlights.map((h) => (
-                <div className="stat" key={h.label}>
-                  <p className="stat-value">{h.value}</p>
-                  <p className="stat-label">{h.label}</p>
-                  <p className="stat-context">{h.context}</p>
-                </div>
-              ))}
-            </div>
-            <p className="logos">
-              Brands & clients: CDLP · C&apos;est Normal · Sneakersnstuff · Klarna · OKQ8 · UNICEF · Husqvarna
-            </p>
-          </section>
-
-          <section id="experience" aria-labelledby="exp-h">
-            <h2 id="exp-h" className="section-h">
-              Experience
-            </h2>
-            {experience.map((r) => (
-              <RoleCard key={r.id} role={r} />
-            ))}
-          </section>
-
-          <section id="ventures" aria-labelledby="ven-h">
-            <h2 id="ven-h" className="section-h">
-              Founder
-            </h2>
-            {ventures.map((r) => (
-              <RoleCard key={r.id} role={r} />
-            ))}
-          </section>
-
-          <section id="earlier" aria-labelledby="ear-h">
-            <h2 id="ear-h" className="section-h">
-              Earlier roles
-            </h2>
-            <div className="list">
-              {earlier.map((e) => (
-                <div className="row" key={e.title + e.company}>
-                  <div className="row-head">
-                    <p className="row-title">
-                      {e.title} <span className="at">· {e.company}</span>
-                    </p>
-                    <p className="period">{e.period}</p>
-                  </div>
-                  <p className="row-text">{e.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section id="skills" aria-labelledby="sk-h">
-            <h2 id="sk-h" className="section-h">
-              Skills
-            </h2>
-            <dl className="skills">
-              {skills.map((s) => (
-                <div key={s.group}>
-                  <dt>{s.group}</dt>
-                  <dd>{s.items}</dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="two-col">
-              <div>
-                <h2 className="section-h">Education</h2>
-                {education.map((e) => (
-                  <div className="row" key={e.title}>
-                    <p className="row-title">{e.title}</p>
-                    <p className="period">
-                      {e.school} · {e.period}
-                    </p>
-                    {e.text && <p className="row-text">{e.text}</p>}
-                  </div>
-                ))}
+        <section id="results" aria-labelledby="results-h" className="block">
+          <h2 id="results-h" className="section-h">
+            Selected results
+          </h2>
+          <div className="stats">
+            {highlights.map((h) => (
+              <div className="stat" key={h.label}>
+                <p className="stat-value">{h.value}</p>
+                <p className="stat-label">{h.label}</p>
+                <p className="stat-context">{h.context}</p>
               </div>
-              <div>
-                <h2 className="section-h">Certifications</h2>
-                <ul className="plain">
-                  {certifications.map((c) => (
-                    <li key={c}>{c}</li>
+            ))}
+          </div>
+          <p className="logos-line">
+            <span>Brands &amp; clients</span> CDLP · C&apos;est Normal · Sneakersnstuff · Klarna · OKQ8 · UNICEF · Husqvarna
+          </p>
+        </section>
+
+        <section id="experience" aria-labelledby="exp-h" className="block">
+          <h2 id="exp-h" className="section-h">
+            Experience
+          </h2>
+          <ol className="timeline">
+            {experience.map((r) => (
+              <RoleItem key={r.id} role={r} />
+            ))}
+          </ol>
+        </section>
+
+        <section id="founder" aria-labelledby="ven-h" className="block">
+          <h2 id="ven-h" className="section-h">
+            Founder
+          </h2>
+          <ol className="timeline">
+            {ventures.map((r) => (
+              <RoleItem key={r.id} role={r} />
+            ))}
+          </ol>
+        </section>
+
+        <section id="earlier" aria-labelledby="ear-h" className="block">
+          <h2 id="ear-h" className="section-h">
+            Earlier roles
+          </h2>
+          <ul className="earlier">
+            {earlier.map((e) => (
+              <li key={e.title + e.company}>
+                <p className="earlier-period">{e.period}</p>
+                <div>
+                  <p className="earlier-title">
+                    {e.title} <span>· {e.company}</span>
+                  </p>
+                  <p className="earlier-text">{e.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="skills" aria-labelledby="sk-h" className="block">
+          <h2 id="sk-h" className="section-h">
+            Skills
+          </h2>
+          <div className="skills">
+            {skills.map((s) => (
+              <div className="skill-group" key={s.group}>
+                <p className="skill-name">{s.group}</p>
+                <ul className="tags">
+                  {s.items.split(/,\s(?![^()]*\))/).map((t) => (
+                    <li key={t}>{t}</li>
                   ))}
                 </ul>
-                <h2 className="section-h">Languages</h2>
-                <p className="row-text">{languages}</p>
               </div>
-            </div>
-          </section>
+            ))}
+          </div>
 
-          <footer className="footer">
-            <p>Open to conversations about senior growth roles and advisory work.</p>
-            <a className="btn primary" href={`mailto:${site.email}`}>
+          <div className="facts">
+            <div>
+              <h2 className="section-h">Education</h2>
+              {education.map((e) => (
+                <div className="fact" key={e.title}>
+                  <p className="fact-title">{e.title}</p>
+                  <p className="fact-meta">
+                    {e.school} · {e.period}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div>
+              <h2 className="section-h">Certifications</h2>
+              {certifications.map((c) => {
+                const [name, by] = c.split(" – ");
+                return (
+                  <div className="fact" key={c}>
+                    <p className="fact-title">{name}</p>
+                    {by && <p className="fact-meta">{by}</p>}
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <h2 className="section-h">Languages</h2>
+              {languages.split(" · ").map((l) => (
+                <div className="fact" key={l}>
+                  <p className="fact-title">{l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <footer className="footer">
+          <p className="footer-lead">Let&apos;s talk growth.</p>
+          <p className="footer-sub">Open to conversations about senior growth roles and advisory work.</p>
+          <div className="footer-actions">
+            <a className="btn primary lg" href={`mailto:${site.email}`}>
               {site.email}
             </a>
-            <p className="fine">© 2026 {site.name}</p>
-          </footer>
-        </main>
-      </div>
+            <a className="btn lg" href="/cv">
+              Download CV (PDF)
+            </a>
+          </div>
+          <p className="fine">© 2026 {site.name} · Stockholm</p>
+        </footer>
+      </main>
     </>
   );
 }
