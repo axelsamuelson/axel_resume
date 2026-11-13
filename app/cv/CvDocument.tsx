@@ -3,6 +3,7 @@ import {
   headline,
   about,
   highlights,
+  highlightsTitle,
   experience,
   ventures,
   earlier,
@@ -160,7 +161,8 @@ export default function CvDocument({ variant }: { variant: Variant }) {
           </p>
           <p className="cv-about">{about}</p>
 
-          <div className="cv-highlights" aria-label="Selected results">
+          <p className="cv-hl-title">{highlightsTitle}</p>
+          <div className="cv-highlights" aria-label={highlightsTitle}>
             {highlights.map((h) => (
               <div className="cv-hl" key={h.label}>
                 <p className="cv-hl-value">{h.value}</p>

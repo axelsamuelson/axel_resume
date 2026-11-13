@@ -4,6 +4,7 @@ import {
   about,
   now,
   highlights,
+  highlightsTitle,
   experience,
   ventures,
   earlier,
@@ -130,7 +131,7 @@ const jsonLd = {
 };
 
 const nav = [
-  { href: "#results", label: "Results" },
+  { href: "#results", label: "Impact" },
   { href: "#experience", label: "Experience" },
   { href: "#founder", label: "Founder" },
   { href: "#earlier", label: "Earlier roles" },
@@ -196,7 +197,7 @@ export default function Home() {
 
         <section id="results" aria-labelledby="results-h" className="block">
           <h2 id="results-h" className="section-h">
-            Selected results
+            {highlightsTitle}
           </h2>
           <div className="stats">
             {highlights.map((h) => (

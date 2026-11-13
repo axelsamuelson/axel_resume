@@ -24,6 +24,9 @@ export const about =
 export const now =
   "Leading growth for C'est Normal and CDLP via Orange Juice Ecommerce Agency, and building PACT, a wine marketplace I founded in 2025.";
 
+// Heading for the headline results row on the site and the CV.
+export const highlightsTitle = "Impact as a growth leader";
+
 export const highlights = [
   { value: "+84%", label: "growth in absolute contribution", context: "C'est Normal · first 4.5 months, YoY" },
   { value: "+27%", label: "absolute contribution on half the media spend", context: "CDLP · first 12 months, YoY" },
