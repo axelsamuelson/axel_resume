@@ -41,6 +41,7 @@ export type Role = {
   tags: string;
   logo?: string; // e.g. "/logos/cdlp.svg"
   logoText?: string; // shown in the logo tile when there is no logo file
+  logoFull?: boolean; // logo is a full square app icon: fill the tile edge to edge
   links?: { label: string; href: string }[];
   summary: string;
   results?: string[];
@@ -127,7 +128,8 @@ export const experience: Role[] = [
   },
   {
     id: "groupm",
-    logoText: "GroupM",
+    logo: "/logos/groupm.webp",
+    logoFull: true,
     title: "Owned Media Consultant (SEO & CRO)",
     company: "GroupM",
     location: "Stockholm",

@@ -24,10 +24,10 @@ function Bullets({ items, className }: { items: string[]; className?: string }) 
   );
 }
 
-function Logo({ name, src, text, size = "md" }: { name: string; src?: string; text?: string; size?: "md" | "sm" }) {
+function Logo({ name, src, text, full, size = "md" }: { name: string; src?: string; text?: string; full?: boolean; size?: "md" | "sm" }) {
   const label = text ?? name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
   return (
-    <div className={`logo logo-${size}`} aria-hidden="true">
+    <div className={`logo logo-${size}${full ? " logo-full" : ""}`} aria-hidden="true">
       {src ? <img src={src} alt="" loading="lazy" /> : <span className={label.length > 3 ? "long" : ""}>{label}</span>}
     </div>
   );
@@ -38,7 +38,7 @@ function RoleCard({ role }: { role: Role }) {
     <article className="card" id={role.id}>
       <div className="card-body">
         <header className="card-head">
-          <Logo name={role.company} src={role.logo} text={role.logoText} />
+          <Logo name={role.company} src={role.logo} text={role.logoText} full={role.logoFull} />
           <div>
             <p className="eyebrow">{role.tags}</p>
             <h3 className="card-title">
