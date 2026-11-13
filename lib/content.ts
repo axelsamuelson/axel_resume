@@ -73,7 +73,7 @@ export const experience: Role[] = [
     period: "Nov 2025 – Present",
     tags: "Consulting · Growth · DTC",
     summary:
-      "Integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth for a portfolio of clients and steer on new-customer revenue and contribution, not ROAS.",
+      "Integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth for a portfolio of clients and steer on new-customer revenue and contribution, not ROAS. Key clients include C'est Normal, CDLP and STIGA Sports.",
     cases: [
       {
         company: "C'est Normal",
@@ -81,12 +81,12 @@ export const experience: Role[] = [
         heading: "Client case: C'est Normal",
         meta: "Jul 2026 – Present",
         intro:
-          "Swedish DTC menswear (jeans, shorts, sneakers). Profitable but Nordic-dependent (39% of net sales in SE + NO), discount-heavy and almost fully reliant on Meta when I took over. I own paid media, growth strategy, measurement, profitability and creative strategy.",
+          "Swedish DTC menswear (jeans, shorts, sneakers). Profitable but Nordic-dependent (39% of net sales in SE + NO), discount-heavy, almost fully reliant on Meta and with new-customer intake in decline when I took over. I own paid media, growth strategy, measurement, profitability and creative strategy.",
         metricsNote: "First 4.5 months vs. same period last year",
         metrics: [
           { value: "+84%", label: "absolute contribution (CM3)", context: "on +61% net sales, CM3 margin +2.8 pp" },
           { value: "+94%", label: "full-price revenue", context: "discounted share of sales −8 pp" },
-          { value: "+54%", label: "new customers", context: "media doubled, paid back in contribution" },
+          { value: "+54%", label: "new customers", context: "declining trend reversed; media doubled, paid back in contribution" },
         ],
         how: [
           "Restructured the Meta account by folding US and DE into the global campaign, which delivered the year's strongest US performance. Markets are isolated only when they can sustain learning-phase volume on their own.",
@@ -107,7 +107,7 @@ export const experience: Role[] = [
     period: "Dec 2024 – Present",
     tags: "In-house, then via Orange Juice from Nov 2025",
     summary:
-      "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. Weekly reporting to the Head of Ecommerce and the CFO, with aMER as north star.",
+      "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. Weekly reporting to the CEO and the CFO, with aMER as north star.",
     metricsNote: "First 12 months vs. prior year, full-price record as of Nov 2026",
     metrics: [
       { value: "+16%", label: "full-price sales above all-time high", context: "rolling 12 months, 2021 record broken Feb 2026" },
@@ -283,7 +283,8 @@ export const languages = "Swedish (native) · English (fluent)";
 // Short versions used on the printable /cv page.
 export const cvShort: Record<string, string[]> = {
   "orange-juice": [
-    "C'est Normal (client, Jul 2026 –): +84% absolute contribution (CM3), +61% net sales and +94% full-price revenue YoY in 4.5 months, with discount share down ~8 pp. Doubled media investment profitably (+54% new customers).",
+    "Key clients: C'est Normal, CDLP and STIGA Sports.",
+    "C'est Normal (client, Jul 2026 –): +84% absolute contribution (CM3), +61% net sales and +94% full-price revenue YoY in 4.5 months, with discount share down ~8 pp. Reversed a declining new-customer trend (+54% new customers) while doubling media investment profitably.",
     "Rebuilt Meta account structure and measurement (delivery vs. shipping geo), set market-specific CAC targets and a phased Google Ads roadmap.",
   ],
   cdlp: [

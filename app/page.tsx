@@ -213,7 +213,7 @@ export default function Home() {
             ))}
           </div>
           <p className="logos-line">
-            <span>Brands &amp; clients</span> CDLP · C&apos;est Normal · Sneakersnstuff · Klarna · OKQ8 · UNICEF · Husqvarna
+            <span>Brands &amp; clients</span> CDLP · C&apos;est Normal · STIGA Sports · Sneakersnstuff · Klarna · OKQ8 · UNICEF · Husqvarna
           </p>
         </section>
 
