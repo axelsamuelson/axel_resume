@@ -30,7 +30,7 @@ export const highlights = [
   { value: "+16%", label: "full-price sales above the brand's all-time high", context: "CDLP, rolling 12 months" },
 ];
 
-export type Block = { heading?: string; meta?: string; intro?: string; results?: string[]; how?: string[] };
+export type Block = { company?: string; logo?: string; heading?: string; meta?: string; intro?: string; results?: string[]; how?: string[] };
 
 export type Role = {
   id: string;
@@ -39,7 +39,8 @@ export type Role = {
   location: string;
   period: string;
   tags: string;
-  image?: string;
+  logo?: string; // e.g. "/logos/cdlp.svg"
+  logoText?: string; // shown in the logo tile when there is no logo file
   links?: { label: string; href: string }[];
   summary: string;
   results?: string[];
@@ -51,16 +52,18 @@ export type Role = {
 export const experience: Role[] = [
   {
     id: "orange-juice",
+    logoText: "OJ",
     title: "Growth Lead (Consultant)",
     company: "Orange Juice Ecommerce Agency",
     location: "Stockholm",
     period: "Nov 2025 – Present",
     tags: "Consulting · Growth · DTC",
-    image: "/images/orange-juice.webp",
     summary:
       "Orange Juice is an integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth end to end for a portfolio of clients and steer on new-customer revenue and contribution margin, not ROAS. Key clients: C'est Normal and CDLP (see below).",
     cases: [
       {
+        company: "C'est Normal",
+        logo: "/logos/cestnormal.png",
         heading: "Client case: C'est Normal",
         meta: "Jul 2026 – Present",
         intro:
@@ -82,12 +85,12 @@ export const experience: Role[] = [
   },
   {
     id: "cdlp",
+    logo: "/logos/cdlp.svg",
     title: "Head of Growth",
     company: "CDLP",
     location: "Stockholm",
     period: "Dec 2024 – Present",
     tags: "In-house, then via Orange Juice from Nov 2025",
-    image: "/images/cdlp.webp",
     summary:
       "CDLP is a premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022. I reset the growth model around full-price demand and profitability by changing how media is bought, which categories and markets get investment, and how performance is reported. I report weekly to the Head of Ecommerce and the CFO, with aMER as north-star metric.",
     results: [
@@ -107,12 +110,12 @@ export const experience: Role[] = [
   },
   {
     id: "sneakersnstuff",
+    logo: "/logos/sneakersnstuff.svg",
     title: "Growth Marketer",
     company: "Sneakersnstuff",
     location: "Stockholm",
     period: "Dec 2022 – Dec 2024",
     tags: "E-commerce · Retail",
-    image: "/images/sns.webp",
     summary:
       "Drove market expansion and revenue growth in the e-commerce team, across both the core business and SNS's own label.",
     results: [
@@ -124,12 +127,12 @@ export const experience: Role[] = [
   },
   {
     id: "groupm",
+    logoText: "GroupM",
     title: "Owned Media Consultant (SEO & CRO)",
     company: "GroupM",
     location: "Stockholm",
     period: "Jun 2021 – Dec 2022",
     tags: "SEO · CRO · Consulting",
-    image: "/images/groupm.webp",
     summary:
       "Strategic lead on owned media for clients including OKQ8, UNICEF and Husqvarna, turning web, search and business data into SEO, CRO and site-architecture strategy.",
     results: [
@@ -141,12 +144,12 @@ export const experience: Role[] = [
   },
   {
     id: "apprl",
+    logo: "/logos/klarna.svg",
     title: "Growth Manager",
     company: "APPRL / Klarna Creator Platform",
     location: "Stockholm",
     period: "Jun 2019 – Aug 2020",
     tags: "B2B · SaaS",
-    image: "/images/apprl.webp",
     summary:
       "Owned inbound growth and positioning for APPRL (later the Klarna Creator Platform), targeting e-commerce brands and content creators across content, SEO, paid acquisition and Salesforce Pardot automation.",
     results: [
@@ -161,12 +164,12 @@ export const experience: Role[] = [
 export const ventures: Role[] = [
   {
     id: "pact",
+    logo: "/logos/pact.png",
     title: "Founder",
     company: "PACT",
     location: "Stockholm",
     period: "2025 – Present",
     tags: "Marketplace · Wine · AI",
-    image: "/images/pact.webp",
     links: [
       { label: "pactwines.com", href: "https://pactwines.com/" },
       { label: "dirtywine.se", href: "https://www.dirtywine.se/" },
@@ -182,12 +185,12 @@ export const ventures: Role[] = [
   },
   {
     id: "karl-axel",
+    logoText: "KA",
     title: "Founder",
     company: "Karl Axel Watches",
     location: "Stockholm",
     period: "2015 – 2017",
     tags: "DTC · E-commerce",
-    image: "/images/karl-axel.webp",
     summary:
       "Founded and ran a DTC brand of minimalist mechanical watches with a Scandinavian design profile. Owned the business end to end: product development, suppliers, e-commerce, performance marketing, content and fulfilment.",
   },

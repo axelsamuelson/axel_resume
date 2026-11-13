@@ -24,22 +24,31 @@ function Bullets({ items, className }: { items: string[]; className?: string }) 
   );
 }
 
+function Logo({ name, src, text, size = "md" }: { name: string; src?: string; text?: string; size?: "md" | "sm" }) {
+  const label = text ?? name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+  return (
+    <div className={`logo logo-${size}`} aria-hidden="true">
+      {src ? <img src={src} alt="" loading="lazy" /> : <span className={label.length > 3 ? "long" : ""}>{label}</span>}
+    </div>
+  );
+}
+
 function RoleCard({ role }: { role: Role }) {
   return (
     <article className="card" id={role.id}>
-      {role.image && (
-        <div className="card-media">
-          <img src={role.image} alt="" loading="lazy" />
-        </div>
-      )}
       <div className="card-body">
-        <p className="eyebrow">{role.tags}</p>
-        <h3 className="card-title">
-          {role.title} <span className="at">· {role.company}</span>
-        </h3>
-        <p className="period">
-          {role.period} · {role.location}
-        </p>
+        <header className="card-head">
+          <Logo name={role.company} src={role.logo} text={role.logoText} />
+          <div>
+            <p className="eyebrow">{role.tags}</p>
+            <h3 className="card-title">
+              {role.title} <span className="at">· {role.company}</span>
+            </h3>
+            <p className="period">
+              {role.period} · {role.location}
+            </p>
+          </div>
+        </header>
         {role.links && (
           <p className="links">
             {role.links.map((l) => (
@@ -64,9 +73,12 @@ function RoleCard({ role }: { role: Role }) {
         )}
         {role.cases?.map((c) => (
           <div className="case" key={c.heading}>
-            <p className="case-title">
-              {c.heading} <span className="period">· {c.meta}</span>
-            </p>
+            <div className="case-head">
+              {c.company && <Logo name={c.company} src={c.logo} size="sm" />}
+              <p className="case-title">
+                {c.heading} <span className="period">· {c.meta}</span>
+              </p>
+            </div>
             {c.intro && <p className="summary">{c.intro}</p>}
             {c.results && (
               <>
