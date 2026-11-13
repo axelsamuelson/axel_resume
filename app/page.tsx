@@ -14,6 +14,7 @@ import {
   type Role,
   type Metric,
 } from "@/lib/content";
+import SideNav from "./SideNav";
 
 function Logo({ name, src, text, full, size = "md" }: { name: string; src?: string; text?: string; full?: boolean; size?: "md" | "sm" }) {
   const label = text ?? name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
@@ -132,7 +133,8 @@ const nav = [
   { href: "#results", label: "Results" },
   { href: "#experience", label: "Experience" },
   { href: "#founder", label: "Founder" },
-  { href: "#skills", label: "Skills" },
+  { href: "#earlier", label: "Earlier roles" },
+  { href: "#skills", label: "Skills & education" },
 ];
 
 export default function Home() {
@@ -143,38 +145,41 @@ export default function Home() {
         Skip to content
       </a>
 
-      <header className="topbar">
-        <div className="topbar-inner">
-          <a href="#top" className="brand">
-            {site.name}
-          </a>
-          <nav className="topnav" aria-label="Sections">
-            {nav.map((n) => (
-              <a key={n.href} href={n.href}>
-                {n.label}
+      <div className="shell">
+        <aside className="sidebar">
+          <div className="side-id">
+            <img className="avatar" src="/images/axel.webp" alt="Axel Samuelson" width={72} height={72} />
+            <div>
+              <p className="side-name">{site.name}</p>
+              <p className="side-role">{site.role}</p>
+            </div>
+          </div>
+
+          <div className="side-contact">
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={site.phoneHref}>{site.phone}</a>
+            {site.linkedin && (
+              <a href={site.linkedin} target="_blank" rel="noopener">
+                LinkedIn ↗
               </a>
-            ))}
-          </nav>
-          <div className="topbar-actions">
-            <a className="btn" href="/cv">
-              CV
-            </a>
+            )}
+            <span>{site.location}</span>
+          </div>
+
+          <div className="side-actions">
             <a className="btn primary" href={`mailto:${site.email}`}>
-              Contact
+              Get in touch
+            </a>
+            <a className="btn" href="/cv">
+              CV (PDF)
             </a>
           </div>
-        </div>
-      </header>
+
+          <SideNav items={nav} />
+        </aside>
 
       <main id="main" className="page">
         <section className="hero" id="top">
-          <div className="hero-id">
-            <img className="avatar" src="/images/axel.webp" alt="Axel Samuelson" width={72} height={72} />
-            <div>
-              <p className="hero-name">{site.name}</p>
-              <p className="hero-role">{site.role}</p>
-            </div>
-          </div>
           <h1>
             {headline.map((l) => (
               <span key={l}>{l}</span>
@@ -186,16 +191,6 @@ export default function Home() {
             <span>
               <strong>Now</strong> {now}
             </span>
-          </p>
-          <p className="contact-line">
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <a href={site.phoneHref}>{site.phone}</a>
-            {site.linkedin && (
-              <a href={site.linkedin} target="_blank" rel="noopener">
-                LinkedIn ↗
-              </a>
-            )}
-            <span>{site.location}</span>
           </p>
         </section>
 
@@ -324,6 +319,7 @@ export default function Home() {
           <p className="fine">© 2026 {site.name} · Stockholm</p>
         </footer>
       </main>
+      </div>
     </>
   );
 }
