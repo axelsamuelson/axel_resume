@@ -121,10 +121,10 @@ export default function CvDocument({ variant }: { variant: Variant }) {
         <a href="/">← Back to site</a>
         <nav className="cv-switch" aria-label="CV version">
           <a href="/cv" aria-current={!full ? "page" : undefined}>
-            Short · 2 pages
+            Short version
           </a>
           <a href="/cv/full" aria-current={full ? "page" : undefined}>
-            Full · 3 pages
+            Full version
           </a>
         </nav>
         <PrintButton />
