@@ -52,7 +52,7 @@ export type Role = {
 export const experience: Role[] = [
   {
     id: "orange-juice",
-    logoText: "OJ",
+    logo: "/logos/orange-juice.png",
     title: "Growth Lead (Consultant)",
     company: "Orange Juice Ecommerce Agency",
     location: "Stockholm",
