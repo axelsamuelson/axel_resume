@@ -28,9 +28,12 @@ const HOW_ON_CV = 1;
 // Max result bullets per role on the printed CV.
 const RESULTS_ON_CV = 2;
 
-function Logo({ src, text, full }: { src?: string; text?: string; full?: boolean }) {
+// "Nov 2025 – Present" -> "Nov 2025 – now"
+const shortPeriod = (p: string) => p.replace("Present", "now");
+
+function Logo({ src, text, full, size = "md" }: { src?: string; text?: string; full?: boolean; size?: "md" | "sm" }) {
   return (
-    <span className={`cv-logo${full ? " full" : ""}`} aria-hidden="true">
+    <span className={`cv-logo ${size}${full ? " full" : ""}`} aria-hidden="true">
       {src ? <img src={src} alt="" /> : <span>{text}</span>}
     </span>
   );
@@ -66,46 +69,48 @@ function List({ items }: { items: string[] }) {
 function RoleBlock({ r }: { r: Role }) {
   return (
     <section className="cv-role">
-      <div className="cv-role-body">
-        <div className="cv-role-head">
-          <Logo src={r.logo} text={r.logoText} full={r.logoFull} />
-          <div className="cv-role-id">
-            <h3 className="cv-role-title">{r.title}</h3>
-            <p className="cv-company">
-              {r.company}
-              {r.links && (
-                <span className="cv-links">
-                  {r.links.map((l) => (
-                    <a key={l.href} href={l.href}>
-                      {l.label}
-                    </a>
-                  ))}
-                </span>
-              )}
-            </p>
-          </div>
-          <p className="cv-period">{r.period}</p>
+      <Logo src={r.logo} text={r.logoText} full={r.logoFull} />
+      <div className="cv-role-head">
+        <div className="cv-role-id">
+          <h3 className="cv-role-title">{r.title}</h3>
+          <p className="cv-company">
+            {r.company}
+            {r.links?.map((l) => (
+              <a key={l.href} href={l.href} className="cv-link">
+                {l.label}
+              </a>
+            ))}
+          </p>
         </div>
-        <p className="cv-summary">{r.summary}</p>
-        {r.metrics && <MetricRow items={r.metrics} note={r.metricsNote} />}
-        {r.results && <List items={r.results.slice(0, RESULTS_ON_CV)} />}
-        {r.how && <List items={r.how.slice(0, HOW_ON_CV)} />}
-        {r.cases?.map((c) => (
-          <div className="cv-case" key={c.heading}>
-            <div className="cv-case-head">
-              <Logo src={c.logo} text={c.company?.slice(0, 2)} />
-              <p>
-                <span className="cv-case-kicker">Client case</span> <strong>{c.company}</strong>{" "}
-                <span className="cv-case-meta">· {c.meta}</span>
-              </p>
-            </div>
-            {c.intro && <p className="cv-summary">{c.intro}</p>}
-            {c.metrics && <MetricRow items={c.metrics} note={c.metricsNote} />}
-            {c.how && <List items={c.how.slice(0, HOW_ON_CV)} />}
-          </div>
-        ))}
+        <p className="cv-period">{shortPeriod(r.period)}</p>
       </div>
+      <p className="cv-summary">{r.summary}</p>
+      {r.metrics && <MetricRow items={r.metrics} note={r.metricsNote} />}
+      {r.results && <List items={r.results.slice(0, RESULTS_ON_CV)} />}
+      {r.how && <List items={r.how.slice(0, HOW_ON_CV)} />}
+      {r.cases?.map((c) => (
+        <div className="cv-case" key={c.heading}>
+          <p className="cv-case-head">
+            <Logo src={c.logo} text={c.company?.slice(0, 2)} size="sm" />
+            <span className="cv-case-kicker">Client case</span>
+            <strong>{c.company}</strong>
+            <span className="cv-case-meta">{shortPeriod(c.meta ?? "")}</span>
+          </p>
+          {c.intro && <p className="cv-summary">{c.intro}</p>}
+          {c.metrics && <MetricRow items={c.metrics} note={c.metricsNote} />}
+          {c.how && <List items={c.how.slice(0, HOW_ON_CV)} />}
+        </div>
+      ))}
     </section>
+  );
+}
+
+function SectionTitle({ n, children }: { n: string; children: React.ReactNode }) {
+  return (
+    <h2 className="cv-sec">
+      <span className="cv-sec-n">{n}</span>
+      {children}
+    </h2>
   );
 }
 
@@ -119,107 +124,116 @@ export default function CV() {
       </div>
 
       <article className="cv">
-        <header className="cv-head">
-          <img className="cv-photo" src="/images/axel.webp" alt="" />
-          <div className="cv-id">
-            <h1>{site.name}</h1>
-            <p className="cv-role-line">{site.role}</p>
-            <p className="cv-tag">{headline.join(" ")}</p>
-          </div>
-          <ul className="cv-contact">
-            <li>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-            </li>
-            <li>{site.phone}</li>
-            {site.linkedin && (
+        <header className="cv-band">
+          <div className="cv-top">
+            <img className="cv-photo" src="/images/axel.webp" alt="" />
+            <div className="cv-id">
+              <h1>{site.name}</h1>
+              <p className="cv-role-line">{site.role}</p>
+            </div>
+            <ul className="cv-contact">
               <li>
-                <a href={site.linkedin}>{linkedinShort}</a>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
               </li>
-            )}
-            <li>
-              <a href={site.url}>axelsamuelson.com</a>
-            </li>
-            <li>{site.location}</li>
-          </ul>
+              <li>{site.phone}</li>
+              {site.linkedin && (
+                <li>
+                  <a href={site.linkedin}>{linkedinShort}</a>
+                </li>
+              )}
+              <li>
+                <a href={site.url}>axelsamuelson.com</a>
+              </li>
+              <li>{site.location}</li>
+            </ul>
+          </div>
+
+          <p className="cv-tagline">
+            {headline[0]} <span>{headline[1]}</span>
+          </p>
+          <p className="cv-about">{about}</p>
+
+          <div className="cv-highlights" aria-label="Selected results">
+            {highlights.map((h) => (
+              <div className="cv-hl" key={h.label}>
+                <p className="cv-hl-value">{h.value}</p>
+                <p className="cv-hl-label">{h.label}</p>
+                <p className="cv-hl-context">{h.context}</p>
+              </div>
+            ))}
+          </div>
         </header>
 
-        <section className="cv-intro">
-          <p>{about}</p>
-        </section>
+        <div className="cv-body">
+          <SectionTitle n="01">Experience</SectionTitle>
+          <div className="cv-timeline">
+            {experience.map((r) => (
+              <RoleBlock key={r.id} r={r} />
+            ))}
+          </div>
 
-        <section className="cv-highlights" aria-label="Selected results">
-          {highlights.map((h) => (
-            <div className="cv-hl" key={h.label}>
-              <p className="cv-hl-value">{h.value}</p>
-              <p className="cv-hl-label">{h.label}</p>
-              <p className="cv-hl-context">{h.context}</p>
-            </div>
-          ))}
-        </section>
+          <SectionTitle n="02">Founder</SectionTitle>
+          <div className="cv-timeline">
+            {ventures.map((r) => (
+              <RoleBlock key={r.id} r={r} />
+            ))}
+          </div>
 
-        <h2 className="cv-h">Experience</h2>
-        {experience.map((r) => (
-          <RoleBlock key={r.id} r={r} />
-        ))}
-
-        <h2 className="cv-h">Founder</h2>
-        {ventures.map((r) => (
-          <RoleBlock key={r.id} r={r} />
-        ))}
-
-        <h2 className="cv-h">Earlier roles</h2>
-        <div className="cv-earlier">
-        {earlier.map((e) => (
-          <section className="cv-role compact" key={e.title + e.company}>
-            <p className="cv-compact-title">{e.title}</p>
-            <p className="cv-compact-meta">
-              {e.company} · {e.period}
-            </p>
-          </section>
-        ))}
-        </div>
-
-        <h2 className="cv-h">Skills</h2>
-        <div className="cv-skills">
-          {skills.map((s) => (
-            <p className="cv-skill" key={s.group}>
-              <strong>{s.group}</strong> {s.items.split(/,\s(?![^()]*\))/).join(" · ")}
-            </p>
-          ))}
-        </div>
-
-        <div className="cv-bottom">
-          <section>
-            <h2 className="cv-h">Education</h2>
-            {education.map((e) => (
-              <div className="cv-fact" key={e.title}>
-                <p className="cv-fact-title">{e.title}</p>
-                <p className="cv-fact-meta">
-                  {e.school} · {e.period}
+          <SectionTitle n="03">Earlier roles</SectionTitle>
+          <div className="cv-earlier">
+            {earlier.map((e) => (
+              <div className="cv-early" key={e.title + e.company}>
+                <p className="cv-early-title">{e.title}</p>
+                <p className="cv-early-meta">
+                  {e.company} <span>{e.period}</span>
                 </p>
               </div>
             ))}
-          </section>
-          <section>
-            <h2 className="cv-h">Certifications</h2>
-            {certifications.map((c) => {
-              const [name, by] = c.split(" – ");
-              return (
-                <p className="cv-fact-line" key={c}>
-                  <strong>{name}</strong>
-                  {by && <span> · {by}</span>}
-                </p>
-              );
-            })}
-          </section>
-          <section>
-            <h2 className="cv-h">Languages</h2>
-            {languages.split(" · ").map((l) => (
-              <p className="cv-fact-line" key={l}>
-                <strong>{l}</strong>
-              </p>
+          </div>
+
+          <SectionTitle n="04">Skills</SectionTitle>
+          <div className="cv-skills">
+            {skills.map((s) => (
+              <div className="cv-skill" key={s.group}>
+                <p className="cv-skill-name">{s.group}</p>
+                <p className="cv-skill-items">{s.items.split(/,\s(?![^()]*\))/).join(" · ")}</p>
+              </div>
             ))}
-          </section>
+          </div>
+
+          <div className="cv-facts">
+            <section>
+              <SectionTitle n="05">Education</SectionTitle>
+              {education.map((e) => (
+                <div className="cv-fact" key={e.title}>
+                  <p className="cv-fact-title">{e.title}</p>
+                  <p className="cv-fact-meta">
+                    {e.school} · {e.period}
+                  </p>
+                </div>
+              ))}
+            </section>
+            <section>
+              <SectionTitle n="06">Certifications</SectionTitle>
+              {certifications.map((c) => {
+                const [name, by] = c.split(" – ");
+                return (
+                  <p className="cv-fact cv-fact-title" key={c}>
+                    {name}
+                    {by && <span className="cv-fact-by"> · {by}</span>}
+                  </p>
+                );
+              })}
+            </section>
+            <section>
+              <SectionTitle n="07">Languages</SectionTitle>
+              {languages.split(" · ").map((l) => (
+                <div className="cv-fact" key={l}>
+                  <p className="cv-fact-title">{l}</p>
+                </div>
+              ))}
+            </section>
+          </div>
         </div>
       </article>
     </div>
