@@ -121,10 +121,10 @@ export const experience: Role[] = [
       "Ran a category-by-category profitability review, combining new-customer margin with cohort LTV. It showed the push into new categories had been too aggressive, so I brought acquisition back to the brand's core and slowed the new categories toward new customers, letting existing customers' appetite for them set the pace. Performance and campaign budgets moved away from non-commercial products toward the categories that drive profitable growth.",
       "Owned the DTC budget through forecasting, with the mandate to shape it, not just deliver against it, and followed it up weekly with the CEO and CFO.",
       "Convinced the founders to move focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
-      "Rebuilt the global Meta account into a hybrid structure: Advantage+ Shopping for scale and broad acquisition, CBO campaigns for testing, seasonal pushes and retargeting, with exclusions so the two never compete for the same audience.",
+      "Onboarded the creative team to a performance mindset, with content built for our most important growth channels such as Meta, and introduced a new testing structure that made creative data-driven rather than brand- and feel-driven. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which delivered strong results.",
       "Uncovered a measurement flaw in global accounts: spill into low-cost markets made up 26% of reach but only 2% of spend, making raw creative metrics misleading. Built a geo-mix-adjusted CPMr model that changed which ads get scaled.",
       "Introduced a 35-dimension naming convention across 120+ ads, enabling creative analysis by funnel stage, format and concept.",
-      "Built the creative strategy: three customer personas, the IEOP brief framework (Interrupt, Explain, Overcome, Push) and an AI copy system with nine product-specific skills that produces on-brand copy and briefs at scale.",
+      "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and built an AI copy system with nine product-specific skills that produces on-brand copy and briefs at scale.",
     ],
   },
   {
