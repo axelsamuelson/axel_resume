@@ -19,7 +19,7 @@ export const site = {
 export const headline = ["Building profitable DTC brands,", "from acquisition to P&L."];
 
 export const about =
-  "Growth leader with 10+ years building and scaling growth for premium DTC e-commerce across paid media, SEO, CRO, CRM and analytics. I steer growth on absolute contribution and full-price demand, work closely with finance on budget allocation and P&L, and build my own data and AI tooling to shorten the path from insight to action.";
+  "Growth leader with 10+ years building and scaling growth for premium DTC e-commerce across paid media, SEO, CRO, CRM and analytics. I steer growth on absolute contribution and full-price demand, own DTC budgets through forecasting, work closely with finance on allocation and P&L, and build my own data and AI tooling to shorten the path from insight to action.";
 
 export const now =
   "Leading growth for C'est Normal and CDLP via Orange Juice Ecommerce Agency, and building PACT, a wine marketplace I founded in 2025.";
@@ -118,9 +118,9 @@ export const experience: Role[] = [
       { value: "−42%", label: "nCAC", context: "aMER +72% on 48% lower media spend" },
     ],
     how: [
+      "Ran a category-by-category profitability review, combining new-customer margin with cohort LTV. It showed the push into new categories had been too aggressive, so I brought acquisition back to the brand's core and slowed the new categories toward new customers, letting existing customers' appetite for them set the pace. Performance and campaign budgets moved away from non-commercial products toward the categories that drive profitable growth.",
+      "Owned the DTC budget through forecasting, with the mandate to shape it, not just deliver against it, and followed it up weekly with the CEO and CFO.",
       "Convinced the founders to move focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
-      "Re-prioritised categories and markets for new-customer acquisition, investing more where full-price demand was strongest.",
-      "When creative output could not sustain Meta's volume requirements, cut total spend sharply and moved budget to Google (+37%) and affiliate (+45%) instead of scaling inefficiency. Meta's share of spend fell from 87% to 68%.",
       "Rebuilt the global Meta account into a hybrid structure: Advantage+ Shopping for scale and broad acquisition, CBO campaigns for testing, seasonal pushes and retargeting, with exclusions so the two never compete for the same audience.",
       "Uncovered a measurement flaw in global accounts: spill into low-cost markets made up 26% of reach but only 2% of spend, making raw creative metrics misleading. Built a geo-mix-adjusted CPMr model that changed which ads get scaled.",
       "Introduced a 35-dimension naming convention across 120+ ads, enabling creative analysis by funnel stage, format and concept.",
@@ -138,6 +138,7 @@ export const experience: Role[] = [
     summary:
       "Drove market expansion and revenue growth in the e-commerce team, across both the core business and SNS's own label.",
     results: [
+      "Responsible for setting and following up the e-commerce budget through forecasting.",
       "Built go-to-market strategies for new product verticals that grew both revenue and profitability.",
       "Identified assortment gaps and built the commercial expansion strategy for SNS's own label.",
       "Led the e-commerce platform migration, owning data integrity and site architecture for SEO, analytics and scalable content.",
@@ -268,7 +269,7 @@ export const education = [
 
 export const skills = [
   { group: "Paid media", items: "Meta Ads (Advantage+, CBO), Google Ads (PMax, Shopping), affiliate (CJ), influencer marketing" },
-  { group: "Profitability & analytics", items: "CM3 steering, nCAC, aMER, Dema, Qlik, Power BI, Shopify Analytics, GA4, GTM, CRO" },
+  { group: "Profitability & analytics", items: "DTC forecasting & budgeting, CM3 steering, nCAC, aMER, Dema, Qlik, Power BI, Shopify Analytics, GA4, GTM, CRO" },
   { group: "CRM & automation", items: "Klaviyo, ActiveCampaign, HubSpot, Bloomreach, Salesforce Pardot" },
   { group: "SEO & ASO", items: "Technical SEO, site migrations, content strategy, ASO (Sensor Tower)" },
   { group: "AI & product", items: "LLM pipelines (Claude API), AI copy & brief systems, Next.js, Supabase, Vercel" },

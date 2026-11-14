@@ -84,7 +84,7 @@ function RoleBlock({ r, full }: { r: Role; full: boolean }) {
         <p className="cv-period">{shortPeriod(r.period)}</p>
       </div>
       <p className="cv-summary">{r.summary}</p>
-      {r.metrics && <MetricRow items={r.metrics} note={r.metricsNote} />}
+      {r.metrics && <MetricRow items={r.metrics} note={full ? r.metricsNote : undefined} />}
       {r.results && <List items={results(r.results)} />}
       {r.how && <List items={how(r.how)} label={full ? "How I did it" : undefined} />}
       {r.cases?.map((c) => (
@@ -96,7 +96,7 @@ function RoleBlock({ r, full }: { r: Role; full: boolean }) {
             <span className="cv-case-meta">{shortPeriod(c.meta ?? "")}</span>
           </p>
           {c.intro && <p className="cv-summary">{c.intro}</p>}
-          {c.metrics && <MetricRow items={c.metrics} note={c.metricsNote} />}
+          {c.metrics && <MetricRow items={c.metrics} note={full ? c.metricsNote : undefined} />}
           {c.how && <List items={how(c.how)} label={full ? "How I did it" : undefined} />}
         </div>
       ))}
