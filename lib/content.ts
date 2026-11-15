@@ -154,10 +154,6 @@ export const experience: Role[] = [
         text: "Onboarded the creative team to a performance mindset, with content built for our most important growth channels such as Meta, and introduced a new testing structure that made creative data-driven rather than brand- and feel-driven. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
       },
       {
-        title: "Made creative performance comparable across markets.",
-        text: "Uncovered a measurement flaw in global accounts: spill into low-cost markets made up 26% of reach but only 2% of spend, making raw creative metrics misleading. Built a geo-mix-adjusted CPMr model that changed which ads get scaled.",
-      },
-      {
         title: "Made creative a repeatable, measurable system.",
         text: "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and a 35-dimension naming convention across 120+ ads, so every concept is briefed the same way and can be analysed by concept, format and funnel stage. An AI copy system with product-specific skills keeps copy and briefs on-brand as volume grows.",
       },
