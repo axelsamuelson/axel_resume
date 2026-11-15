@@ -30,7 +30,7 @@ export const highlightsTitle = "Impact as a growth leader";
 export const highlights = [
   { value: "+84%", label: "growth in absolute contribution", context: "C'est Normal · first 4.5 months, YoY" },
   { value: "+27%", label: "absolute contribution on half the media spend", context: "CDLP · first 12 months, YoY" },
-  { value: "+16%", label: "full-price sales above the all-time high", context: "CDLP · rolling 12 months" },
+  { value: "+37%", label: "full-price sales, to an all-time high", context: "CDLP · rolling 12 months since taking over" },
 ];
 
 export type Metric = { value: string; label: string; context?: string };
@@ -130,9 +130,9 @@ export const experience: Role[] = [
     tags: "In-house, then via Orange Juice from Nov 2025",
     summary:
       "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. aMER is the north-star metric.",
-    metricsNote: "First 12 months vs. prior year, full-price record as of Nov 2026",
+    metricsNote: "Full-price sales: rolling 12 months, Nov 2024 → Nov 2026. CM3 and nCAC: first 12 months vs. prior year.",
     metrics: [
-      { value: "+16%", label: "full-price sales above all-time high", context: "rolling 12 months, 2021 record broken Feb 2026" },
+      { value: "+37%", label: "full-price sales", context: "record level, 16% above the 2021 high" },
       { value: "+27%", label: "absolute contribution (CM3)", context: "CM3 margin +10 pp, net sales flat (−2%)" },
       { value: "−42%", label: "nCAC", context: "aMER +72% on 48% lower media spend" },
     ],
@@ -151,7 +151,7 @@ export const experience: Role[] = [
       },
       {
         title: "Moved the brand from markdown-led to full-price growth.",
-        text: "Convinced the founders to shift focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
+        text: "Convinced the founders to shift focus from markdown campaigns to scaling what sold at full price. Full-price sales grew 37% to a record level and the full-price share rose from 53% to 68%, while discounted sales fell 26%. Full-price sales to new customers alone grew 48%. This drove the sharp rise in contribution (CM3), contributing to the strongest bottom-line result since the company was founded.",
       },
       {
         title: "Turned creative into a new-customer engine.",
