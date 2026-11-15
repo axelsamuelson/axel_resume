@@ -146,6 +146,10 @@ export const experience: Role[] = [
         text: "Set the DTC budget through forecasting, with the mandate to shape it, not just deliver against it, and followed it up weekly with the CEO and CFO.",
       },
       {
+        title: "Tied purchasing to commercial and financial performance.",
+        text: "Linked purchasing planning more tightly to how the business performs commercially and financially, so buying decisions follow what sells profitably and inventory is managed more efficiently.",
+      },
+      {
         title: "Moved the brand from markdown-led to full-price growth.",
         text: "Convinced the founders to shift focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
       },
