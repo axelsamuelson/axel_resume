@@ -80,7 +80,7 @@ export const experience: Role[] = [
     period: "Nov 2025 – Present",
     tags: "Consulting · Growth · DTC",
     summary:
-      "Integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth for a portfolio of clients and steer on new-customer revenue and contribution, not ROAS. Key clients include C'est Normal, CDLP and STIGA Sports.",
+      "Integrated growth partner for premium Scandinavian DTC brands, combining media buying, financial advisory and full-funnel growth management. I lead growth for a portfolio of clients and optimise for new-customer revenue and contribution rather than ROAS. Key clients include C'est Normal, CDLP and STIGA Sports.",
     cases: [
       {
         company: "C'est Normal",
@@ -129,7 +129,7 @@ export const experience: Role[] = [
     period: "Dec 2024 – Present",
     tags: "In-house, then via Orange Juice from Nov 2025",
     summary:
-      "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. Weekly reporting to the CEO and the CFO, with aMER as north star.",
+      "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. aMER is the north-star metric.",
     metricsNote: "First 12 months vs. prior year, full-price record as of Nov 2026",
     metrics: [
       { value: "+16%", label: "full-price sales above all-time high", context: "rolling 12 months, 2021 record broken Feb 2026" },
@@ -147,7 +147,7 @@ export const experience: Role[] = [
       },
       {
         title: "Tied purchasing to commercial and financial performance.",
-        text: "Linked purchasing planning more tightly to how the business performs commercially and financially, so buying decisions follow what sells profitably and inventory is managed more efficiently.",
+        text: "Connected purchasing planning to the demand forecast, category strategy and financial targets, so inventory is planned around the growth plan rather than separately from it.",
       },
       {
         title: "Moved the brand from markdown-led to full-price growth.",
@@ -155,11 +155,11 @@ export const experience: Role[] = [
       },
       {
         title: "Turned creative into a new-customer engine.",
-        text: "Onboarded the creative team to a performance mindset, with content built for our most important growth channels such as Meta, and introduced a new testing structure that made creative data-driven rather than brand- and feel-driven. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
+        text: "Onboarded the creative team to a performance mindset, with content built for acquisition on our most important growth channels such as Meta rather than driven by brand and feel. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
       },
       {
-        title: "Made creative a repeatable, measurable system.",
-        text: "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and a 35-dimension naming convention across 120+ ads, so every concept is briefed the same way and can be analysed by concept, format and funnel stage. An AI copy system with product-specific skills keeps copy and briefs on-brand as volume grows.",
+        title: "Built a repeatable system for briefing and testing ads.",
+        text: "Introduced a new testing structure that made creative decisions data-driven, the IEOP brief framework (Interrupt, Explain, Overcome, Push) and a 35-dimension naming convention across 120+ ads, so every concept is briefed the same way and every test can be read by concept, format and funnel stage. An AI copy system with product-specific skills keeps copy and briefs on-brand as volume grows.",
       },
     ],
   },
