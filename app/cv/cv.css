@@ -157,6 +157,11 @@ html:has(.cv-wrap) { color-scheme: light; }
 .cv .cv-fact-meta { font-size: 8pt; color: var(--muted); }
 .cv-fact-by { font-weight: 400; color: var(--muted); }
 
+/* Short version: a little tighter so it stays on two pages */
+.cv:not(.cv-full) .cv-sec { margin-top: 3.6mm; }
+.cv:not(.cv-full) .cv-role { padding: 2.2mm 0 1.6mm; }
+.cv:not(.cv-full) .cv-role > .cv-logo { top: 2.2mm; }
+
 /* ---------- Small screens: readable web page ---------- */
 @media (max-width: 760px) {
   .cv-wrap { padding: 12px 0 32px; }

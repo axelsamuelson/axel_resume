@@ -96,11 +96,26 @@ export const experience: Role[] = [
           { value: "+54%", label: "new customers", context: "declining trend reversed; media doubled, paid back in contribution" },
         ],
         how: [
-          "Restructured the Meta account by folding US and DE into the global campaign, which delivered the year's strongest US performance. Markets are isolated only when they can sustain learning-phase volume on their own.",
-          "Fixed a measurement blind spot: showed that Meta's country breakdown reflects ad-delivery location, not shipping address, and validated a 10-country exclusion list against aMER by shipping and billing country.",
-          "Re-based max-CAC targets on market-specific AOV instead of blended AOV.",
-          "Defined category roles (sneakers for acquisition, jeans for retention), a discount philosophy for the Swedish market, and the value-proposition and creative-brief framework for The Jeans and The Shorts.",
-          "Designed a phased Google Ads roadmap (feed and Merchant Center fixes, then PMax, value-based bidding and scale) and migrated the product feed to Woolytech.",
+          {
+            title: "Unlocked the US by simplifying the account structure.",
+            text: "Restructured the Meta account by folding US and DE into the global campaign, which delivered the year's strongest US performance. Markets are isolated only when they can sustain learning-phase volume on their own.",
+          },
+          {
+            title: "Fixed market measurement so budgets follow real buyers.",
+            text: "Showed that Meta's country breakdown reflects ad-delivery location, not shipping address, and validated a 10-country exclusion list against aMER by shipping and billing country.",
+          },
+          {
+            title: "Set acquisition targets per market, not one blended number.",
+            text: "Re-based max-CAC targets on market-specific AOV instead of blended AOV.",
+          },
+          {
+            title: "Gave every category a clear commercial job.",
+            text: "Defined category roles (sneakers for acquisition, jeans for retention), a discount philosophy for the Swedish market, and the value-proposition and creative-brief framework for The Jeans and The Shorts.",
+          },
+          {
+            title: "Built the roadmap to make Google a second growth channel.",
+            text: "Designed a phased Google Ads roadmap (feed and Merchant Center fixes, then PMax, value-based bidding and scale) and migrated the product feed to Woolytech.",
+          },
         ],
       },
     ],

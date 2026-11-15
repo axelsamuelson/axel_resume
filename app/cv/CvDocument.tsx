@@ -21,7 +21,7 @@ import "./cv.css";
 export type Variant = "short" | "full";
 
 // What the short (two-page) version keeps. The full version shows everything.
-const SHORT = { how: 1, results: 2 };
+const SHORT = { how: 2, results: 2 };
 
 // "Nov 2025 – Present" -> "Nov 2025 – now"
 const shortPeriod = (p: string) => p.replace("Present", "now");
@@ -73,7 +73,9 @@ function List({ items, label }: { items: Point[]; label?: string }) {
 }
 
 function RoleBlock({ r, full }: { r: Role; full: boolean }) {
-  const how = (items: Point[]) => (full ? items : items.slice(0, SHORT.how));
+  // Short version: only the action titles (or the first plain points).
+  const how = (items: Point[]) =>
+    full ? items : items.slice(0, SHORT.how).map((p) => (typeof p === "string" ? p : p.title));
   const results = (items: string[]) => (full ? items : items.slice(0, SHORT.results));
   return (
     <section className="cv-role">
