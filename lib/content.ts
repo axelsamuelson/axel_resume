@@ -129,7 +129,7 @@ export const experience: Role[] = [
     period: "Dec 2024 – Present",
     tags: "In-house, then via Orange Juice from Nov 2025",
     summary:
-      "Premium Swedish underwear and essentials brand selling in 80+ countries (US 35%, UK 14%, SE 12%, DE 7%). Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. aMER is the north-star metric.",
+      "Premium Swedish underwear and essentials brand selling in 90+ countries. Full-price new-customer growth had stalled since 2022, so I reset the growth model around full-price demand and profitability. aMER is the north-star metric.",
     metricsNote: "Full-price sales: rolling 12 months, Nov 2024 → Nov 2026. CM3 and nCAC: first 12 months vs. prior year.",
     metrics: [
       { value: "+37%", label: "full-price sales", context: "record level, 16% above the 2021 high" },
@@ -140,6 +140,10 @@ export const experience: Role[] = [
       {
         title: "Refocused growth on the categories that make money.",
         text: "Ran a category-by-category profitability review, combining new-customer margin with cohort LTV. It showed the push into new categories had been too aggressive, so I brought acquisition back to the brand's core and slowed the new categories toward new customers, letting existing customers' appetite for them set the pace. Performance and campaign budgets moved away from non-commercial products toward the categories that drive profitable growth.",
+      },
+      {
+        title: "Turned shrinking markets back into growth.",
+        text: "Eight markets that were declining before I joined, including the US, UK, Canada and Switzerland, returned to full-price growth, and Hong Kong and Singapore became new markets above 1% of sales. Together they drove 63% of the full-price growth. In the US, CDLP's largest market, full-price sales grew 38%.",
       },
       {
         title: "Owned the DTC budget, not just the media plan.",
