@@ -35,6 +35,10 @@ export const highlights = [
 
 export type Metric = { value: string; label: string; context?: string };
 
+// A bullet point. Use { title, text } for an action title: a bold first
+// sentence that states the conclusion, followed by the supporting detail.
+export type Point = string | { title: string; text: string };
+
 export type Block = {
   company?: string;
   logo?: string;
@@ -44,7 +48,7 @@ export type Block = {
   metrics?: Metric[];
   metricsNote?: string;
   results?: string[];
-  how?: string[];
+  how?: Point[];
 };
 
 export type Role = {
@@ -62,7 +66,7 @@ export type Role = {
   metrics?: Metric[];
   metricsNote?: string;
   results?: string[];
-  how?: string[];
+  how?: Point[];
   cases?: Block[];
 };
 
@@ -118,13 +122,34 @@ export const experience: Role[] = [
       { value: "−42%", label: "nCAC", context: "aMER +72% on 48% lower media spend" },
     ],
     how: [
-      "Ran a category-by-category profitability review, combining new-customer margin with cohort LTV. It showed the push into new categories had been too aggressive, so I brought acquisition back to the brand's core and slowed the new categories toward new customers, letting existing customers' appetite for them set the pace. Performance and campaign budgets moved away from non-commercial products toward the categories that drive profitable growth.",
-      "Owned the DTC budget through forecasting, with the mandate to shape it, not just deliver against it, and followed it up weekly with the CEO and CFO.",
-      "Convinced the founders to move focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
-      "Onboarded the creative team to a performance mindset, with content built for our most important growth channels such as Meta, and introduced a new testing structure that made creative data-driven rather than brand- and feel-driven. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
-      "Uncovered a measurement flaw in global accounts: spill into low-cost markets made up 26% of reach but only 2% of spend, making raw creative metrics misleading. Built a geo-mix-adjusted CPMr model that changed which ads get scaled.",
-      "Introduced a 35-dimension naming convention across 120+ ads, enabling creative analysis by funnel stage, format and concept.",
-      "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and built an AI copy system with nine product-specific skills that produces on-brand copy and briefs at scale.",
+      {
+        title: "Refocused growth on the categories that make money.",
+        text: "Ran a category-by-category profitability review, combining new-customer margin with cohort LTV. It showed the push into new categories had been too aggressive, so I brought acquisition back to the brand's core and slowed the new categories toward new customers, letting existing customers' appetite for them set the pace. Performance and campaign budgets moved away from non-commercial products toward the categories that drive profitable growth.",
+      },
+      {
+        title: "Owned the DTC budget, not just the media plan.",
+        text: "Set the DTC budget through forecasting, with the mandate to shape it, not just deliver against it, and followed it up weekly with the CEO and CFO.",
+      },
+      {
+        title: "Moved the brand from markdown-led to full-price growth.",
+        text: "Convinced the founders to shift focus from markdown campaigns to scaling what sold at full price. Full-price share of net sales rose 2.9 pp, average discount depth nearly halved, and discounts are now used selectively, e.g. through a Klaviyo VIP segment ahead of seasonal sales.",
+      },
+      {
+        title: "Turned creative into a new-customer engine.",
+        text: "Onboarded the creative team to a performance mindset, with content built for our most important growth channels such as Meta, and introduced a new testing structure that made creative data-driven rather than brand- and feel-driven. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
+      },
+      {
+        title: "Made creative performance comparable across markets.",
+        text: "Uncovered a measurement flaw in global accounts: spill into low-cost markets made up 26% of reach but only 2% of spend, making raw creative metrics misleading. Built a geo-mix-adjusted CPMr model that changed which ads get scaled.",
+      },
+      {
+        title: "Made every ad analysable by concept, format and funnel stage.",
+        text: "Introduced a 35-dimension naming convention across 120+ ads, enabling structured creative analysis.",
+      },
+      {
+        title: "Scaled on-brand creative production with AI.",
+        text: "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and built an AI copy system with nine product-specific skills that produces on-brand copy and briefs at scale.",
+      },
     ],
   },
   {

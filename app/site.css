@@ -154,6 +154,8 @@ h1 span:last-child { color: var(--s-dim); }
 .bullets li { position: relative; padding-left: 20px; color: var(--s-body); }
 .bullets li::before { content: ""; position: absolute; left: 3px; top: .72em; width: 6px; height: 6px; border-radius: 2px; background: var(--s-dim); }
 
+.pt-title { color: var(--s-text); font-weight: 650; }
+
 /* How I did it */
 .how { margin-top: 16px; }
 .how summary {

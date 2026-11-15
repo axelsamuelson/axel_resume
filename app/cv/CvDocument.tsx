@@ -13,6 +13,7 @@ import {
   languages,
   type Role,
   type Metric,
+  type Point,
 } from "@/lib/content";
 import PrintButton from "./PrintButton";
 import "./cv.css";
@@ -50,13 +51,21 @@ function MetricRow({ items, note }: { items: Metric[]; note?: string }) {
   );
 }
 
-function List({ items, label }: { items: string[]; label?: string }) {
+function List({ items, label }: { items: Point[]; label?: string }) {
   return (
     <>
     {label && <p className="cv-list-label">{label}</p>}
     <ul className="cv-list">
       {items.map((t) => (
-        <li key={t}>{t}</li>
+        <li key={typeof t === "string" ? t : t.title}>
+          {typeof t === "string" ? (
+            t
+          ) : (
+            <>
+              <strong className="cv-pt-title">{t.title}</strong> {t.text}
+            </>
+          )}
+        </li>
       ))}
     </ul>
     </>
@@ -64,7 +73,7 @@ function List({ items, label }: { items: string[]; label?: string }) {
 }
 
 function RoleBlock({ r, full }: { r: Role; full: boolean }) {
-  const how = (items: string[]) => (full ? items : items.slice(0, SHORT.how));
+  const how = (items: Point[]) => (full ? items : items.slice(0, SHORT.how));
   const results = (items: string[]) => (full ? items : items.slice(0, SHORT.results));
   return (
     <section className="cv-role">

@@ -121,6 +121,7 @@ html:has(.cv-wrap) { color-scheme: light; }
 
 .cv-list { margin-top: 1.4mm; display: grid; gap: .6mm; }
 .cv-list li { position: relative; padding-left: 3.6mm; break-inside: avoid; }
+.cv-pt-title { color: var(--ink); font-weight: 700; }
 .cv-list li::before { content: ""; position: absolute; left: .3mm; top: .6em; width: 1.5mm; height: 1.5mm; border-radius: 50%; border: 1.2px solid var(--accent-ink); }
 
 .cv-case { margin-top: 2.2mm; padding: 2.6mm; border-radius: 3mm; background: var(--softer); border: 1px solid #f0f0f2; }

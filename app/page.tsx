@@ -14,6 +14,7 @@ import {
   languages,
   type Role,
   type Metric,
+  type Point,
 } from "@/lib/content";
 import SideNav from "./SideNav";
 
@@ -43,17 +44,30 @@ function Metrics({ items, note }: { items: Metric[]; note?: string }) {
   );
 }
 
-function Bullets({ items }: { items: string[] }) {
+function PointText({ p }: { p: Point }) {
+  if (typeof p === "string") return <>{p}</>;
+  return (
+    <>
+      <strong className="pt-title">{p.title}</strong> {p.text}
+    </>
+  );
+}
+
+const pointKey = (p: Point) => (typeof p === "string" ? p : p.title);
+
+function Bullets({ items }: { items: Point[] }) {
   return (
     <ul className="bullets">
-      {items.map((t) => (
-        <li key={t}>{t}</li>
+      {items.map((p) => (
+        <li key={pointKey(p)}>
+          <PointText p={p} />
+        </li>
       ))}
     </ul>
   );
 }
 
-function How({ items }: { items: string[] }) {
+function How({ items }: { items: Point[] }) {
   return (
     <details className="how">
       <summary>
