@@ -155,11 +155,7 @@ export const experience: Role[] = [
       },
       {
         title: "Turned creative into a new-customer engine.",
-        text: "Onboarded the creative team to a performance mindset, with content built for acquisition on our most important growth channels such as Meta rather than driven by brand and feel. The old approach worked for warm prospects and existing customers but not for winning new ones. We also stopped treating every CDLP customer as the same buyer and built creative for several distinct personas with different reasons to buy, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
-      },
-      {
-        title: "Built a repeatable system for briefing and testing ads.",
-        text: "Introduced a new testing structure that made creative decisions data-driven, the IEOP brief framework (Interrupt, Explain, Overcome, Push) and a 35-dimension naming convention across 120+ ads, so every concept is briefed the same way and every test can be read by concept, format and funnel stage. An AI copy system with product-specific skills keeps copy and briefs on-brand as volume grows.",
+        text: "Moved the creative team from brand- and feel-driven content to performance creative built for acquisition on Meta and our other key channels, backed by a data-driven testing and briefing structure. Instead of treating every CDLP customer as the same buyer, we built for several distinct personas, which contributed to the strong results and allowed CDLP to scale Meta spend again.",
       },
     ],
   },
