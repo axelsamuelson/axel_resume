@@ -158,12 +158,8 @@ export const experience: Role[] = [
         text: "Uncovered a measurement flaw in global accounts: spill into low-cost markets made up 26% of reach but only 2% of spend, making raw creative metrics misleading. Built a geo-mix-adjusted CPMr model that changed which ads get scaled.",
       },
       {
-        title: "Made every ad analysable by concept, format and funnel stage.",
-        text: "Introduced a 35-dimension naming convention across 120+ ads, enabling structured creative analysis.",
-      },
-      {
-        title: "Scaled on-brand creative production with AI.",
-        text: "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and built an AI copy system with nine product-specific skills that produces on-brand copy and briefs at scale.",
+        title: "Made creative a repeatable, measurable system.",
+        text: "Introduced the IEOP brief framework (Interrupt, Explain, Overcome, Push) and a 35-dimension naming convention across 120+ ads, so every concept is briefed the same way and can be analysed by concept, format and funnel stage. An AI copy system with product-specific skills keeps copy and briefs on-brand as volume grows.",
       },
     ],
   },
